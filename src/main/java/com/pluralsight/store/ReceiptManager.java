@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.store;
 
 public class ReceiptManager {
 }
