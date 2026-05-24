@@ -22,5 +22,26 @@ public class Drink extends OrderItem {
         return size.getPrice();
     }
 
-    //@Override
+    @Override
+    public String getDescription() {
+
+        return flavor;
+    }
+
+    //getters and setters
+    public DrinkSize getSize() {
+        return size;
+    }
+
+    public void setSize(DrinkSize size) {
+        this.size = size;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
 }
