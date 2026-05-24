@@ -1,4 +1,4 @@
 package com.pluralsight.enums;
 
-public enum ToppingsSize {
+public enum ToppingsType {
 }
