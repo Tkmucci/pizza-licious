@@ -18,6 +18,7 @@ public class Pizza extends OrderItem {
     private boolean extraCheese;
 
     public Pizza(PizzaSize size, String crustType, String sauce) {
+
         super("", 0.00);
         this.size = size;
         this.crustType = crustType;
@@ -39,15 +40,11 @@ public class Pizza extends OrderItem {
     }
 
     @Override
-    public double getPrice() {
-        return calculatePrice();
-    }
-
-    @Override
     public String getDescription() {
         return "Pizza Description coming soon";
     }
 
+    //methods to add toppings
     public void addMeat(Topping meat) { meats.add(meat); }
     public void addCheese(Topping cheese) { cheeses.add(cheese); }
     public void addRegularTopping(Topping topping) { regularToppings.add(topping); }
