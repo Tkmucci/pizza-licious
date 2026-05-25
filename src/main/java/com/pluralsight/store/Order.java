@@ -62,6 +62,10 @@ public class Order {
         return this.items.isEmpty();
     }
 
+    public int getItemCount() {
+
+        return this.items.size();
+    }
 
     public String getCustomerName() {
         return customerName;
