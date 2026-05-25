@@ -20,4 +20,8 @@ public class Order {
         this.customerName = "Guest";
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
 }
