@@ -18,10 +18,15 @@ public class UserInterface {
 
         showWelcomeMessage();
         homeScreen();
+
+        //testing
+        System.out.println(currentOrder.toString());
+
     }
 
     private void showWelcomeMessage() {
 
+        //testing the method
         System.out.println("=".repeat(36));
         System.out.println("Welcome to Mucci & Co. Artisan Pizza");
         System.out.println("=".repeat(36));
@@ -32,6 +37,7 @@ public class UserInterface {
 
     private void startNewOrder() {
 
+        System.out.print("Name: ");
         String customerName = userInput.nextLine().trim();
         currentOrder = new Order(customerName);
 

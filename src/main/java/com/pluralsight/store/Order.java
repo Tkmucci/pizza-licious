@@ -83,6 +83,21 @@ public class Order {
         return orderTime.format(orderTimeFormatter);
     }
 
+    @Override
+    public String toString(){
+
+        StringBuilder receiptPrintout = new StringBuilder();
+
+        //for testing
+
+        receiptPrintout.append("MUCCI & CO. ARTISAN PIZZA\n");
+        receiptPrintout.append("Customer: ").append(customerName).append("\n");
+        receiptPrintout.append("Order Time: ").append(getFormattedOrderTime()).append("\n");
+        receiptPrintout.append("ITEMS: ");
+
+        return receiptPrintout.toString();
+    }
+
     public String getCustomerName() {
         return customerName;
     }
