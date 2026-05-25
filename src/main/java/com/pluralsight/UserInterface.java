@@ -20,13 +20,13 @@ public class UserInterface {
         System.out.println("Welcome to Mucci & Co. Artisan Pizza");
         System.out.println("=".repeat(5));
 
-        System.out.println("Starting order for" + currentOrder);
         startNewOrder();
+        System.out.println("Starting order for " + currentOrder.getCustomerName());
     }
 
     private void startNewOrder() {
 
-        System.out.println(currentOrder);
+        currentOrder = new Order();
 
     }
 
