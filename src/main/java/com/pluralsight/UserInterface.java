@@ -38,12 +38,14 @@ public class UserInterface {
 
     private void startNewOrder() {
 
-        System.out.print("Customer Name (For 'Guest' press Enter: ");
+        System.out.print("Customer Name (For 'Guest' press Enter): ");
         String customerName = userInput.nextLine().trim();
+
+        currentOrder = new Order(customerName);
 
         System.out.println("Starting order for " + currentOrder.getCustomerName());
 
-        currentOrder = new Order(customerName);
+        orderScreen();
 
     }
 
@@ -94,6 +96,75 @@ public class UserInterface {
                         Have a great day! 🍕""");
                 System.exit(0);
 
+
+        }
+
+    }
+
+    private void orderScreen() {
+
+        int userOption;
+
+        do {
+
+            System.out.printf("""
+                            \n--- ORDER MENU ---
+                            Current items: %s
+                            Current total: $%.2f
+                            
+                            1) Add Pizza
+                            2) Add Drink
+                            3) Add Garlic Knots
+                            4) Checkout
+                            0) Cancel order)
+                            Option:\s
+                            """
+                    , currentOrder.getItemCount()
+                    , currentOrder.getTotal()
+            );
+
+
+            if (!userInput.hasNextInt()) {
+
+                System.out.println("⚠️: Enter numbers only!");
+                userInput.nextLine();
+                userOption = -1;
+
+            } else {
+
+                userOption = userInput.nextInt();
+                userInput.nextLine();
+            }
+
+            if (userOption < 0 || userOption > 1) {
+
+                System.out.println("⚠️: Wrong choice (choose 0 or 1) try again!");
+            }
+
+
+        } while (userOption < 0 || userOption > 4);
+
+        switch (userOption) {
+
+            case 1:
+                System.out.println("Add pizza screen coming soon!!!");
+            case 2:
+                System.out.println("Add Drink screen coming soon!!!");
+            case 3:
+                System.out.println("Add Garlic Knots screen coming soon!!!");
+            case 4:
+                System.out.println("Checkout screen coming soon!!!");
+            case 0:
+
+                System.out.println("Canceling order, confirm?: ");
+                String userConfirmation = userInput.nextLine();
+
+                if (userConfirmation.equalsIgnoreCase("yes" )|| userConfirmation.equalsIgnoreCase("y")){
+
+                    return;
+                }
+
+            default:
 
         }
 
