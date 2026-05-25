@@ -73,7 +73,7 @@ public class Order {
 
         DateTimeFormatter receiptTimeFormatter = DateTimeFormatter.ofPattern("yyyMMdd-HHmmss");
 
-        return orderTime.format(receiptTimeFormatter);
+        return orderTime.format(receiptTimeFormatter) + ".txt";
     }
 
     public String getFormattedOrderTime() {
