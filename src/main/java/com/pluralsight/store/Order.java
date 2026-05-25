@@ -76,6 +76,13 @@ public class Order {
         return orderTime.format(receiptTimeFormatter);
     }
 
+    public String getFormattedOrderTime() {
+
+        DateTimeFormatter orderTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+
+        return orderTime.format(orderTimeFormatter);
+    }
+
     public String getCustomerName() {
         return customerName;
     }
