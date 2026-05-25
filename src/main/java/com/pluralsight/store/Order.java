@@ -1,6 +1,7 @@
 package com.pluralsight.store;
 
 import com.pluralsight.abstracts.OrderItem;
+import com.pluralsight.menuitems.Drink;
 import com.pluralsight.menuitems.Pizza;
 
 import java.time.LocalDateTime;
@@ -33,6 +34,10 @@ public class Order {
 
     public void addPizza(Pizza pizza){
         items.add(pizza);
+    }
+
+    public void addDrink(Drink drink){
+        items.add(drink);
     }
 
     public String getCustomerName() {
