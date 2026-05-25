@@ -121,7 +121,7 @@ public class Topping {
     }
 
     public double getExtraCheesePrice(PizzaSize size) {
-        
+
         switch (size) {
 
             case SMALL_8:
@@ -140,6 +140,10 @@ public class Topping {
 
                 return 0.00;
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
 }
