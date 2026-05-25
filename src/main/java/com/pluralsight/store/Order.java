@@ -1,6 +1,7 @@
 package com.pluralsight.store;
 
 import com.pluralsight.abstracts.OrderItem;
+import com.pluralsight.menuitems.Pizza;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,6 +29,10 @@ public class Order {
 
     public void addItem(OrderItem item){
         this.items.add(item);
+    }
+
+    public void addPizza(Pizza pizza){
+        items.add(pizza);
     }
 
     public String getCustomerName() {
