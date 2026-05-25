@@ -14,6 +14,7 @@ public class ReceiptManager {
         //creating a new folder named receipts if it does not already exist
         File receiptsFolder = new File("receipts");
 
+        //creating a new folder named "receipts" if it does not already exist
         if (!receiptsFolder.exists()) {
 
             receiptsFolder.mkdirs();
@@ -24,6 +25,7 @@ public class ReceiptManager {
     public void saveReceipt(Order order){
 
         //writing the file name as "localdatetime.txt" in the folder named "receipts"
+        //used File.seperator to make the code portable in case the code is run from a different system..
         String saveReceiptAs = RECEIPTS_FOLDER + File.separator + order.getReceiptSaveName();
 
         try {
