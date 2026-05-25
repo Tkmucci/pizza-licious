@@ -26,6 +26,10 @@ public class Order {
         this.customerName = customerName;
     }
 
+    public void addItem(OrderItem item){
+        this.items.add(item);
+    }
+
     public String getCustomerName() {
         return customerName;
     }
