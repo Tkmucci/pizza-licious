@@ -2,6 +2,7 @@ package com.pluralsight.store;
 
 import com.pluralsight.abstracts.OrderItem;
 import com.pluralsight.menuitems.Drink;
+import com.pluralsight.menuitems.GarlicKnots;
 import com.pluralsight.menuitems.Pizza;
 
 import java.time.LocalDateTime;
@@ -38,6 +39,10 @@ public class Order {
 
     public void addDrink(Drink drink){
         items.add(drink);
+    }
+
+    public void addGarlicKnots(GarlicKnots garlicknots){
+        items.add(garlicknots);
     }
 
     public String getCustomerName() {
