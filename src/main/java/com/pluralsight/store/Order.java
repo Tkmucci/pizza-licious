@@ -5,7 +5,9 @@ import com.pluralsight.menuitems.Drink;
 import com.pluralsight.menuitems.GarlicKnots;
 import com.pluralsight.menuitems.Pizza;
 
+import javax.swing.text.DateFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,13 @@ public class Order {
     public int getItemCount() {
 
         return this.items.size();
+    }
+
+    public String getReceiptSaveName(){
+
+        DateTimeFormatter receiptTimeFormatter = DateTimeFormatter.ofPattern("yyyMMdd-HHmmss");
+
+        return orderTime.format(receiptTimeFormatter);
     }
 
     public String getCustomerName() {
