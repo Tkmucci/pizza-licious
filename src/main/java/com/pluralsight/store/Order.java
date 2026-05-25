@@ -57,6 +57,12 @@ public class Order {
         return total;
     }
 
+    public boolean isEmpty() {
+
+        return this.items.isEmpty();
+    }
+
+
     public String getCustomerName() {
         return customerName;
     }
