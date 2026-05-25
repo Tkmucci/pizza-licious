@@ -8,16 +8,16 @@ public class Topping {
     private String name;
     private ToppingsType type;
 
-    public Topping (String name, ToppingsType type) {
+    public Topping(String name, ToppingsType type) {
 
         this.name = name;
         this.type = type;
     }
 
     //this is to get the price of this topping based on size and type
-    public double getPrice (PizzaSize size) {
+    public double getPrice(PizzaSize size) {
 
-        switch (type){
+        switch (type) {
 
             case MEAT, CHEESE:
 
@@ -34,9 +34,9 @@ public class Topping {
     }
 
     //this is to get the extra price of this topping based on size and type
-    public double getExtraPrice(PizzaSize size){
+    public double getExtraPrice(PizzaSize size) {
 
-        switch (type){
+        switch (type) {
 
             case MEAT, CHEESE:
 
@@ -113,6 +113,28 @@ public class Topping {
             case LARGE_16:
 
                 return 2.25;
+
+            default:
+
+                return 0.00;
+        }
+    }
+
+    public double getExtraCheesePrice(PizzaSize size) {
+        
+        switch (size) {
+
+            case SMALL_8:
+
+                return 0.30;
+
+            case MEDIUM_12:
+
+                return 0.60;
+
+            case LARGE_16:
+
+                return 0.90;
 
             default:
 
