@@ -143,7 +143,18 @@ public class Topping {
     }
 
     public String getName() {
+
         return name;
+    }
+    public ToppingsType getType() {
+
+        return type;
+    }
+
+    @Override
+    public String toString() {
+
+        return  name;
     }
 
 }
