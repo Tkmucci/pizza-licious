@@ -88,6 +88,10 @@ public class UserInterface {
                 startNewOrder();
                 break;
             case 0:
+
+                System.out.println("""
+                        \nThank you for visiting Mucci & Co.!
+                        Have a great day! 🍕""");
                 System.exit(0);
 
 
