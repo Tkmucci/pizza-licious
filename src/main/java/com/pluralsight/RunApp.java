@@ -1,10 +1,14 @@
 package com.pluralsight;
 
+import com.pluralsight.UserInterface;
+
 public class RunApp {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to Mucci & Co. Artisan Pizza");
+        UserInterface myUserInterface = new UserInterface();
+
+        myUserInterface.showWelomeMessage;
 
     }
 
