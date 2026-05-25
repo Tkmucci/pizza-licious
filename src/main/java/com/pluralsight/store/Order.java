@@ -45,6 +45,18 @@ public class Order {
         items.add(garlicknots);
     }
 
+    public double getTotal(){
+
+        double total = 0.0;
+
+        for (OrderItem item : this.items) {
+
+            total = total + item.getPrice();
+
+        }
+        return total;
+    }
+
     public String getCustomerName() {
         return customerName;
     }
