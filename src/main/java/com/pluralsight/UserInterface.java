@@ -14,11 +14,17 @@ public class UserInterface {
         this.userInput = new Scanner(System.in);
     }
 
-    public void showWelcomeMessage() {
+    public void run() {
 
-        System.out.println("=".repeat(5));
+        showWelcomeMessage();
+        homeScreen();
+    }
+
+    private void showWelcomeMessage() {
+
+        System.out.println("=".repeat(36));
         System.out.println("Welcome to Mucci & Co. Artisan Pizza");
-        System.out.println("=".repeat(5));
+        System.out.println("=".repeat(36));
 
         startNewOrder();
         System.out.println("Starting order for " + currentOrder.getCustomerName());
@@ -27,6 +33,11 @@ public class UserInterface {
     private void startNewOrder() {
 
         currentOrder = new Order();
+
+    }
+
+    private void homeScreen() {
+
 
     }
 

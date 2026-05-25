@@ -6,7 +6,7 @@ public class RunApp {
 
         UserInterface myUserInterface = new UserInterface();
 
-        myUserInterface.showWelcomeMessage();
+        myUserInterface.run();
 
     }
 
