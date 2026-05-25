@@ -52,7 +52,18 @@ public class Topping {
                 return 0.00;
 
         }
-
     }
+
+    private double getMeatPrice(PizzaSize size) {
+        switch (size) {
+            case SMALL_8:
+                return 1.00;
+            case MEDIUM_12:
+                return 2.00;
+            case LARGE_16:
+                return 3.00;
+            default:
+                return 0.00;
+        }
 
 }
