@@ -32,7 +32,8 @@ public class UserInterface {
 
     private void startNewOrder() {
 
-        currentOrder = new Order();
+        String customerName = userInput.nextLine().trim();
+        currentOrder = new Order(customerName);
 
     }
 

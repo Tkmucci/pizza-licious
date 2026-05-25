@@ -13,11 +13,17 @@ public class Order {
     private LocalDateTime orderTime;
 
     //for testing
-    public Order(){
+//    public Order(){
+//
+//        this.items = new ArrayList<>();
+//        this.orderTime = LocalDateTime.now();
+//        this.customerName = "Guest";
+//    }
 
+    public Order(String customerName){
         this.items = new ArrayList<>();
         this.orderTime = LocalDateTime.now();
-        this.customerName = "Guest";
+        this.customerName = customerName;
     }
 
     public String getCustomerName() {
