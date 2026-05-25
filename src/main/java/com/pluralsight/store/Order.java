@@ -98,6 +98,16 @@ public class Order {
         receiptPrintout.append("-".repeat(34));
         receiptPrintout.append("\nITEMS: ");
 
+        for (int i = 0; i < items.size(); i++) {
+
+            receiptPrintout.append(i + 1).append(". ").append(this.items.get(i).getDescription()).append("\n");
+        }
+
+        receiptPrintout.append("\n").append("-".repeat(34));
+        receiptPrintout.append(String.format("\nTotal: $%.2f\n",getTotal()));
+        receiptPrintout.append("~".repeat(34));
+        receiptPrintout.append("\n  Thank you, please call again!\n");
+        receiptPrintout.append("~".repeat(34));
 
         return receiptPrintout.toString();
     }
