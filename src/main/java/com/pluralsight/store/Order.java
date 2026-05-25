@@ -90,10 +90,14 @@ public class Order {
 
         //for testing
 
-        receiptPrintout.append("MUCCI & CO. ARTISAN PIZZA\n");
-        receiptPrintout.append("Customer: ").append(customerName).append("\n");
+        receiptPrintout.append("=".repeat(34));
+        receiptPrintout.append("\nMUCCI & CO. ARTISAN PIZZA\n");
+        receiptPrintout.append("=".repeat(34));
+        receiptPrintout.append("\nCustomer: ").append(customerName).append("\n");
         receiptPrintout.append("Order Time: ").append(getFormattedOrderTime()).append("\n");
-        receiptPrintout.append("ITEMS: ");
+        receiptPrintout.append("-".repeat(34));
+        receiptPrintout.append("\nITEMS: ");
+
 
         return receiptPrintout.toString();
     }
