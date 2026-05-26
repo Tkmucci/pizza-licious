@@ -19,7 +19,7 @@ public class Pizza extends OrderItem {
 
     public Pizza(PizzaSize size, String crustType, String sauce) {
 
-        super("", 0.00);
+        super("Custom Pizza", size.getBasePrice());
         this.size = size;
         this.crustType = crustType;
         this.sauce = sauce;
@@ -33,15 +33,125 @@ public class Pizza extends OrderItem {
 
     @Override
     public double calculatePrice() {
-        double total = 0;
+        double total = size.getBasePrice();
 
+        //add meat toppings, with the optional extra
+        for (Topping meat : meats) {
+
+            total += meat.getPrice(size);
+
+            if (extraMeat) {
+
+                total += meat.getExtraPrice(size);
+            }
+        }
+
+        //add cheeses toppings, with the optional extra
+        for (Topping cheese : cheeses) {
+
+            total += cheese.getPrice(size);
+
+            if (extraCheese) {
+
+                total += cheese.getExtraPrice(size);
+            }
+        }
+
+        //since regular toppings are free, we won't add anything.
+
+        //add stuffed crust if selected
+        if (this.stuffedCrust) {
+
+            total += getStuffedCrustPrice();
+        }
 
         return total;
     }
 
+    private double getStuffedCrustPrice() {
+
+        switch (size) {
+
+            case SMALL_8:
+
+                return 1.00;
+
+            case MEDIUM_12:
+
+                return 1.50;
+
+            case LARGE_16:
+
+                return 2.00;
+
+            default:
+
+                return 0.00;
+        }
+    }
+
     @Override
     public String getDescription() {
-        return "Pizza Description coming soon";
+
+        StringBuilder orderDescription = new StringBuilder();
+        orderDescription.append(size.getDisplay()).append(" ").append(name).append("\n");
+        orderDescription.append("  Crust: ").append(crustType).append("\n");
+        orderDescription.append("  Sauce: ").append(sauce).append("\n");
+
+        if (!meats.isEmpty()) {
+
+            orderDescription.append("  Meats: ");
+
+            for (int i = 0; i < meats.size(); i++) {
+
+                orderDescription.append(meats.get(i).getName());
+
+                if (i < meats.size() - 1) orderDescription.append(", ");
+
+            }
+            if (extraMeat) orderDescription.append(" (EXTRA)");
+
+            orderDescription.append("\n");
+        }
+
+        if (!cheeses.isEmpty()) {
+
+            orderDescription.append("  Cheeses: ");
+
+            for (int i = 0; i < cheeses.size(); i++) {
+
+                orderDescription.append(cheeses.get(i).getName());
+
+                if (i < cheeses.size() - 1) orderDescription.append(", ");
+
+            }
+            if (extraCheese) orderDescription.append(" (EXTRA)");
+
+            orderDescription.append("\n");
+        }
+
+        if (!regularToppings.isEmpty()) {
+
+            orderDescription.append("  Toppings: ");
+
+            for (int i = 0; i < regularToppings.size(); i++) {
+
+                orderDescription.append(regularToppings.get(i).getName());
+
+                if (i < regularToppings.size() - 1) orderDescription.append(", ");
+
+            }
+
+            orderDescription.append("\n");
+        }
+
+        if (stuffedCrust) {
+            orderDescription.append("  Stuffed Crust\n");
+        }
+
+        orderDescription.append("  Price: $").append(String.format("%.2f", getPrice()));
+
+        return orderDescription.toString();
     }
 
     //methods to add toppings

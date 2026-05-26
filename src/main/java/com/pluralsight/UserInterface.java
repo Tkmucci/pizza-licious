@@ -29,7 +29,7 @@ public class UserInterface {
         homeScreen();
 
         //testing
-        System.out.println(currentOrder.toString());
+        //System.out.println(currentOrder.toString());
 
     }
 
@@ -132,7 +132,7 @@ public class UserInterface {
                     break;
                 case 4:
                     checkoutScreen();
-                    break;
+                    return;
                 case 0:
 
                     System.out.println("Canceling order, confirm?: ");
@@ -142,7 +142,9 @@ public class UserInterface {
 
                         return;
                     }
+                    else {
                     System.exit(0);
+                    }
 
                 default:
                     System.out.println("⚠️:Enter a number between 1 and 4 and try again");
@@ -169,7 +171,7 @@ public class UserInterface {
 
         int sizeChoice = getUserOption(3);
 
-        PizzaSize size = null;
+        PizzaSize size;
         switch (sizeChoice) {
             case 1:
                 size = PizzaSize.SMALL_8;
@@ -263,8 +265,6 @@ public class UserInterface {
         addRegularToppings(pizza);
 
         //stuffed crust
-
-        assert size != null;
         System.out.printf("\nWould you like stuffed crust? (+$%.2f) (y/n): ", getStuffedCrustPrice(size));
 
         if (userInput.nextLine().trim().equalsIgnoreCase("y") || userInput.nextLine().trim().equalsIgnoreCase("yes")) {
@@ -273,6 +273,7 @@ public class UserInterface {
         }
 
         currentOrder.addPizza(pizza);
+        System.out.printf("\nPizza added to order! Price: $%.2f"),getStuffedCrustPrice(size);
 
     }
 

@@ -12,7 +12,7 @@ public class ReceiptManager {
     public ReceiptManager(){
 
         //creating a new folder named receipts if it does not already exist
-        File receiptsFolder = new File("receipts");
+        File receiptsFolder = new File(RECEIPTS_FOLDER);
 
         //creating a new folder named "receipts" if it does not already exist
         if (!receiptsFolder.exists()) {
