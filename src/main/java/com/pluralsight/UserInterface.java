@@ -64,7 +64,7 @@ public class UserInterface {
 
             System.out.print("Option: ");
 
-            userOption = getUserOption();
+            userOption = getUserOption(1);
 
         } while (userOption < 0 || userOption > 1);
 
@@ -102,14 +102,14 @@ public class UserInterface {
                             3) Add Garlic Knots
                             4) Checkout
                             0) Cancel order)
-                            Option:\s
+                            Option:
                             """
                     , currentOrder.getItemCount()
                     , currentOrder.getTotal()
             );
 
 
-            userOption = getUserOption();
+            userOption = getUserOption(4);
 
 
         } while (userOption < 0 || userOption > 4);
@@ -145,8 +145,10 @@ public class UserInterface {
 
     }
 
-    private int getUserOption() {
+    private int getUserOption(int optionMax) {
+
         int userOption;
+
         if (!userInput.hasNextInt()) {
 
             System.out.println("⚠️: Enter numbers only!");
@@ -159,7 +161,7 @@ public class UserInterface {
             userInput.nextLine();
         }
 
-        if (userOption < 0 || userOption > 1) {
+        if (userOption < 0 || userOption > optionMax) {
 
             System.out.println("⚠️: Wrong choice (choose 0 or 1) try again!");
         }
