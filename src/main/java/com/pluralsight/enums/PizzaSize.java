@@ -32,6 +32,6 @@ public enum PizzaSize {
     @Override
     public String toString() {
 
-        return display;
+        return String.format("%s (%s) - $%.2f",name,display,basePrice);
     }
 }

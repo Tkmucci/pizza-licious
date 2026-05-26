@@ -98,7 +98,8 @@ public class UserInterface {
         while (true) {
 
                 System.out.printf("""
-                                \n--- ORDER MENU ---
+                                \n
+                                --- ORDER MENU ---
                                 Current items: %s
                                 Current total: $%.2f
                                 
@@ -156,8 +157,6 @@ public class UserInterface {
 
     private void addPizzaMenuScreen() {
 
-        System.out.println("\n--- BUILD YOUR PIZZA ---");
-
         //selecting the pizza size
         System.out.print("""
                 \n--- BUILD YOUR PIZZA ---
@@ -172,7 +171,9 @@ public class UserInterface {
         int sizeChoice = getUserOption(3);
 
         PizzaSize size;
+
         switch (sizeChoice) {
+
             case 1:
                 size = PizzaSize.SMALL_8;
                 break;
@@ -184,6 +185,7 @@ public class UserInterface {
                 break;
             default:
                 System.out.println("Invalid size. Pizza not added to cart. Please try again.");
+                return;
         }
 
         //selecting the crust
@@ -250,6 +252,7 @@ public class UserInterface {
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
+                return;
         }
 
         //create pizza
@@ -267,13 +270,15 @@ public class UserInterface {
         //stuffed crust
         System.out.printf("\nWould you like stuffed crust? (+$%.2f) (y/n): ", getStuffedCrustPrice(size));
 
-        if (userInput.nextLine().trim().equalsIgnoreCase("y") || userInput.nextLine().trim().equalsIgnoreCase("yes")) {
+        String stuffedAnswer = userInput.nextLine().trim();
+
+        if (stuffedAnswer.equalsIgnoreCase("y") || stuffedAnswer.equalsIgnoreCase("yes")) {
 
             pizza.setStuffedCrust(true);
         }
 
         currentOrder.addPizza(pizza);
-        System.out.printf("\nPizza added to order! Price: $%.2f"),getStuffedCrustPrice(size);
+        System.out.printf("\nPizza added to order! Price: $%.2f",currentOrder.getTotal());
 
     }
 
@@ -329,7 +334,7 @@ public class UserInterface {
             }
 
             pizza.addMeat(meat);
-            System.out.println("Added " + meat.getName());
+            System.out.println("Added " + meat.name());
         }
 
         if (!pizza.getMeats().isEmpty()) {
@@ -389,7 +394,7 @@ public class UserInterface {
             }
 
             pizza.addCheese(cheese);
-            System.out.println("Added " + cheese.getName());
+            System.out.println("Added " + cheese.name());
         }
 
         if (!pizza.getCheeses().isEmpty()) {
@@ -466,7 +471,7 @@ public class UserInterface {
             }
 
             pizza.addRegularTopping(topping);
-            System.out.println("Added " + topping.getName());
+            System.out.println("Added " + topping.name());
         }
 
     }

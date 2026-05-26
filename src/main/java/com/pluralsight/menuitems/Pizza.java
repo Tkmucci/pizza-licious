@@ -104,7 +104,7 @@ public class Pizza extends OrderItem {
 
             for (int i = 0; i < meats.size(); i++) {
 
-                orderDescription.append(meats.get(i).getName());
+                orderDescription.append(meats.get(i).name());
 
                 if (i < meats.size() - 1) orderDescription.append(", ");
 
@@ -120,7 +120,7 @@ public class Pizza extends OrderItem {
 
             for (int i = 0; i < cheeses.size(); i++) {
 
-                orderDescription.append(cheeses.get(i).getName());
+                orderDescription.append(cheeses.get(i).name());
 
                 if (i < cheeses.size() - 1) orderDescription.append(", ");
 
@@ -136,7 +136,7 @@ public class Pizza extends OrderItem {
 
             for (int i = 0; i < regularToppings.size(); i++) {
 
-                orderDescription.append(regularToppings.get(i).getName());
+                orderDescription.append(regularToppings.get(i).name());
 
                 if (i < regularToppings.size() - 1) orderDescription.append(", ");
 

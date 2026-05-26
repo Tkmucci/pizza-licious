@@ -99,7 +99,6 @@ public class Order {
 
         StringBuilder receiptPrintout = new StringBuilder();
 
-        //for testing
 
         receiptPrintout.append("=".repeat(34));
         receiptPrintout.append("\nMUCCI & CO. ARTISAN PIZZA\n");
@@ -107,7 +106,7 @@ public class Order {
         receiptPrintout.append("\nCustomer: ").append(customerName).append("\n");
         receiptPrintout.append("Order Time: ").append(getFormattedOrderTime()).append("\n");
         receiptPrintout.append("-".repeat(34));
-        receiptPrintout.append("\nITEMS: ");
+        receiptPrintout.append("\nITEMS: \n");
 
         for (int i = 0; i < items.size(); i++) {
 
