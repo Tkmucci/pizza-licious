@@ -64,22 +64,7 @@ public class UserInterface {
 
             System.out.print("Option: ");
 
-            if (!userInput.hasNextInt()) {
-
-                System.out.println("⚠️: Enter numbers only!");
-                userInput.nextLine();
-                userOption = -1;
-
-            } else {
-
-                userOption = userInput.nextInt();
-
-                userInput.nextLine();
-            }
-            if (userOption < 0 || userOption > 1) {
-
-                System.out.println("⚠️: Wrong choice (choose 0 or 1) try again!");
-            }
+            userOption = getUserOption();
 
         } while (userOption < 0 || userOption > 1);
 
@@ -124,22 +109,7 @@ public class UserInterface {
             );
 
 
-            if (!userInput.hasNextInt()) {
-
-                System.out.println("⚠️: Enter numbers only!");
-                userInput.nextLine();
-                userOption = -1;
-
-            } else {
-
-                userOption = userInput.nextInt();
-                userInput.nextLine();
-            }
-
-            if (userOption < 0 || userOption > 1) {
-
-                System.out.println("⚠️: Wrong choice (choose 0 or 1) try again!");
-            }
+            userOption = getUserOption();
 
 
         } while (userOption < 0 || userOption > 4);
@@ -148,12 +118,16 @@ public class UserInterface {
 
             case 1:
                 System.out.println("Add pizza screen coming soon!!!");
+                break;
             case 2:
                 System.out.println("Add Drink screen coming soon!!!");
+                break;
             case 3:
                 System.out.println("Add Garlic Knots screen coming soon!!!");
+                break;
             case 4:
                 System.out.println("Checkout screen coming soon!!!");
+                break;
             case 0:
 
                 System.out.println("Canceling order, confirm?: ");
@@ -163,11 +137,33 @@ public class UserInterface {
 
                     return;
                 }
+                System.exit(0);
 
             default:
 
         }
 
+    }
+
+    private int getUserOption() {
+        int userOption;
+        if (!userInput.hasNextInt()) {
+
+            System.out.println("⚠️: Enter numbers only!");
+            userInput.nextLine();
+            userOption = -1;
+
+        } else {
+
+            userOption = userInput.nextInt();
+            userInput.nextLine();
+        }
+
+        if (userOption < 0 || userOption > 1) {
+
+            System.out.println("⚠️: Wrong choice (choose 0 or 1) try again!");
+        }
+        return userOption;
     }
 
 }

@@ -28,7 +28,19 @@ public class Order {
     public Order(String customerName){
         this.items = new ArrayList<>();
         this.orderTime = LocalDateTime.now();
-        this.customerName = customerName;
+//        this.customerName = customerName;
+
+        //formatting the customer name the way I prefer.
+        if (customerName == null || customerName.isEmpty()) {
+
+            this.customerName = "Guest";
+        } else {
+
+            //capitalizing first letter
+            this.customerName = customerName.substring(0, 1).toUpperCase() +
+                    customerName.substring(1).toLowerCase();
+        }
+
     }
 
     public void addItem(OrderItem item){
