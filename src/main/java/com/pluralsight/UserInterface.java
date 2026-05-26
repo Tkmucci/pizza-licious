@@ -256,6 +256,7 @@ public class UserInterface {
         //add regular toppings
 
         //stuffed crust
+        assert size != null;
         System.out.print("\nWould you like stuffed crust? (+$" + getStuffedCrustPrice(size) + ") (y/n): ");
 
         if (userInput.nextLine().trim().equalsIgnoreCase("y") || userInput.nextLine().trim().equalsIgnoreCase("yes")) {
@@ -265,9 +266,14 @@ public class UserInterface {
 
     }
 
-    private String getStuffedCrustPrice(PizzaSize size) {
+    private double getStuffedCrustPrice(PizzaSize size) {
 
-        return "12.00";
+        return switch (size) {
+
+            case SMALL_8 -> 1.00;
+            case MEDIUM_12 -> 1.20;
+            case LARGE_16 -> 1.25;
+        };
     }
 
     private int getUserOption(int optionMax) {
