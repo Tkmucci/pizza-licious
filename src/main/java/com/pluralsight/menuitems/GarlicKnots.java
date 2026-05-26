@@ -19,6 +19,6 @@ public class GarlicKnots extends OrderItem {
     @Override
     public String getDescription() {
 
-        return name;
+        return String.format("Garlic Knots - $%.2f", getPrice());
     }
 }
