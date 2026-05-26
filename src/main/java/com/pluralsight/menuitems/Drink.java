@@ -10,7 +10,7 @@ public class Drink extends OrderItem {
 
     public Drink(DrinkSize size, String flavor) {
 
-        super(flavor, size.getPrice());
+        super(flavor + " Drink", size.getPrice());
 
         this.size = size;
         this.flavor = flavor;
@@ -25,7 +25,8 @@ public class Drink extends OrderItem {
     @Override
     public String getDescription() {
 
-        return flavor;
+        return String.format("%s %s Drink - $%.2f",
+                size.getName(), flavor, getPrice());
     }
 
     //getters and setters

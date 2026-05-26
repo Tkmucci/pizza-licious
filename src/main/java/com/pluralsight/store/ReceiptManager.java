@@ -22,22 +22,21 @@ public class ReceiptManager {
     }
 
     //saving the order as a receipt in the folder named "receipts"
-    public void saveReceipt(Order order){
+    public void saveReceipt(Order order) {
 
         //writing the file name as "localdatetime.txt" in the folder named "receipts"
         //used File.seperator to make the code portable in case the code is run from a different system..
         String saveReceiptAs = RECEIPTS_FOLDER + File.separator + order.getReceiptSaveName();
 
-        try {
+        try (BufferedWriter filenameWriter = new BufferedWriter( new FileWriter(saveReceiptAs))){
 
-            BufferedWriter filenameWriter = new BufferedWriter( new FileWriter(saveReceiptAs));
 
             //writing the order details from Order class toString method to the file named
             // "receipts/localdatetime.txt"
             filenameWriter.write(order.toString());
 
             //confirming that the file creation was successful.
-            System.out.println("Receipt saved: ");
+            System.out.println("Receipt saved: " + saveReceiptAs);
 
         }
         catch (IOException e) {

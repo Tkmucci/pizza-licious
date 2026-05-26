@@ -9,6 +9,7 @@ import com.pluralsight.menuitems.Topping;
 import com.pluralsight.store.Order;
 import com.pluralsight.store.ReceiptManager;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -560,7 +561,7 @@ public class UserInterface {
 
         if (userOption < 0 || userOption > optionMax) {
 
-            System.out.println("⚠️: Wrong choice (choose 0 or 1) try again!");
+            System.out.printf("⚠️: Wrong choice (choose 0 or %s) try again!",optionMax);
         }
         return userOption;
     }
@@ -573,9 +574,8 @@ public class UserInterface {
             return;
         }
 
-        System.out.println("\n" + "=".repeat(50));
-        System.out.println("CHECKOUT - ORDER SUMMARY");
-        System.out.println("=".repeat(50));
+        System.out.println("--- CHECKOUT ---");
+
         System.out.println(currentOrder.toString());
 
         System.out.print("Confirm order? (y/n): ");
