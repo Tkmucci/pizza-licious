@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.store;
 
 import com.pluralsight.enums.DrinkSize;
 import com.pluralsight.enums.PizzaSize;
@@ -6,10 +6,7 @@ import com.pluralsight.menuitems.Drink;
 import com.pluralsight.menuitems.GarlicKnots;
 import com.pluralsight.menuitems.Pizza;
 import com.pluralsight.menuitems.Topping;
-import com.pluralsight.store.Order;
-import com.pluralsight.store.ReceiptManager;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -571,7 +568,7 @@ public class UserInterface {
         if (currentOrder.isEmpty()) {
 
             System.out.println("\n⚠️: Cannot checkout with an empty order!");
-            return;
+            homeScreen();
         }
 
         System.out.println("--- CHECKOUT ---");
