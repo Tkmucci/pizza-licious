@@ -118,7 +118,7 @@ public class UserInterface {
 
             case 1:
                 System.out.println("Add pizza screen coming soon!!!");
-                break;
+                checkoutScreen();
             case 2:
                 System.out.println("Add Drink screen coming soon!!!");
                 break;
@@ -126,7 +126,7 @@ public class UserInterface {
                 System.out.println("Add Garlic Knots screen coming soon!!!");
                 break;
             case 4:
-                System.out.println("Checkout screen coming soon!!!");
+                checkoutScreen();
                 break;
             case 0:
 
@@ -169,11 +169,11 @@ public class UserInterface {
     }
     private void checkoutScreen() {
 
-        if (currentOrder.isEmpty()) {
-
-            System.out.println("\n⚠️: Cannot checkout with an empty order!");
-            return;
-        }
+//        if (currentOrder.isEmpty()) {
+//
+//            System.out.println("\n⚠️: Cannot checkout with an empty order!");
+//            return;
+//        }
 
         System.out.println("\n" + "=".repeat(50));
         System.out.println("CHECKOUT - ORDER SUMMARY");
