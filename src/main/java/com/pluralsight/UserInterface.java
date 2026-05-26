@@ -7,6 +7,7 @@ import com.pluralsight.menuitems.Topping;
 import com.pluralsight.store.Order;
 import com.pluralsight.store.ReceiptManager;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -295,12 +296,24 @@ public class UserInterface {
 
             switch (choice) {
 
-                case 1: meat = Topping.PEPPERONI; break;
-                case 2: meat = Topping.SAUSAGE; break;
-                case 3: meat = Topping.HAM; break;
-                case 4: meat = Topping.BACON; break;
-                case 5: meat = Topping.CHICKEN; break;
-                case 6: meat = Topping.MEATBALL; break;
+                case 1:
+                    meat = Topping.PEPPERONI;
+                    break;
+                case 2:
+                    meat = Topping.SAUSAGE;
+                    break;
+                case 3:
+                    meat = Topping.HAM;
+                    break;
+                case 4:
+                    meat = Topping.BACON;
+                    break;
+                case 5:
+                    meat = Topping.CHICKEN;
+                    break;
+                case 6:
+                    meat = Topping.MEATBALL;
+                    break;
                 default:
                     System.out.println("Invalid option.");
                     continue;
@@ -310,15 +323,152 @@ public class UserInterface {
             System.out.println("Added " + meat.getName());
         }
 
+        if (!pizza.getMeats().isEmpty()) {
+
+            System.out.print("Would you like EXTRA meat on all meats? (+50% more per meat) (y/n): ");
+
+            if (userInput.nextLine().trim().equalsIgnoreCase("y")) {
+
+                pizza.setExtraMeat(true);
+            }
+        }
+
     }
 
-    private void addGarlicKnotsScreen(){
+    private void addCheeseToppings(Pizza pizza) {
+
+        System.out.println("""
+                \n--- CHEESE TOPPINGS ---
+                Pricing: 8" = $0.75, 12" = $1.50, 16" = $2.25
+                1) Mozzarella
+                2) Parmesan
+                3) Ricotta
+                4) Goat Cheese
+                5) Buffalo
+                0) Done selecting cheese
+                """);
+
+        while (true) {
+
+            System.out.print("Add cheese (0 when done): ");
+
+            int choice = getUserOption(5);
+
+            if (choice == 0) break;
+
+            Topping cheese = null;
+            switch (choice) {
+
+                case 1:
+                    cheese = Topping.MOZZARELLA;
+                    break;
+                case 2:
+                    cheese = Topping.PARMESAN;
+                    break;
+                case 3:
+                    cheese = Topping.RICOTTA;
+                    break;
+                case 4:
+                    cheese = Topping.GOAT_CHEESE;
+                    break;
+                case 5:
+                    cheese = Topping.BUFFALO_CHEESE;
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+                    continue;
+            }
+
+            pizza.addCheese(cheese);
+            System.out.println("Added " + cheese.getName());
+        }
+
+        if (!pizza.getCheeses().isEmpty()) {
+
+            System.out.print("Would you like EXTRA cheese on all cheeses? (y/n): ");
+
+            if (userInput.nextLine().trim().equalsIgnoreCase("y")) {
+
+                pizza.setExtraCheese(true);
+            }
+        }
+
+    }
+
+    private void addRegularToppings(Pizza pizza) {
+
+        System.out.print("""
+                \n--- REGULAR TOPPINGS (FREE) ---
+                
+                1) Onions
+                2) Mushrooms
+                3) Bell Peppers
+                4) Olives
+                5) Tomatoes
+                6) Spinach
+                7) Basil
+                8) Pineapple
+                9) Anchovies
+                0) Done selecting cheese toppings
+                """);
+
+        while (true) {
+
+            System.out.print("Add topping (0 when done): ");
+
+            int choice = getUserOption(9);
+
+            if (choice == 0) break;
+
+            Topping topping = null;
+
+            switch (choice) {
+
+                case 1:
+                    topping = Topping.ONIONS;
+                    break;
+                case 2:
+                    topping = Topping.MUSHROOMS;
+                    break;
+                case 3:
+                    topping = Topping.BELL_PEPPERS;
+                    break;
+                case 4:
+                    topping = Topping.OLIVES;
+                    break;
+                case 5:
+                    topping = Topping.TOMATOES;
+                    break;
+                case 6:
+                    topping = Topping.SPINACH;
+                    break;
+                case 7:
+                    topping = Topping.BASIL;
+                    break;
+                case 8:
+                    topping = Topping.PINEAPPLE;
+                    break;
+                case 9:
+                    topping = Topping.ANCHOVIES;
+                    break;
+                default:
+                    System.out.println("Invalid option.");
+                    continue;
+            }
+
+            pizza.addRegularTopping(topping);
+            System.out.println("Added " + topping.getName());
+        }
+
+    }
+
+    private void addGarlicKnotsScreen() {
 
         GarlicKnots garlicKnots = new GarlicKnots();
 
         currentOrder.addGarlicKnots(garlicKnots);
 
-        System.out.printf("\nGarlic Knots added to order! Price: $%.2f",garlicKnots.getPrice());
+        System.out.printf("\nGarlic Knots added to order! Price: $%.2f", garlicKnots.getPrice());
 
     }
 
