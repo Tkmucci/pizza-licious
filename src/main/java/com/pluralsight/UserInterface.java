@@ -167,5 +167,30 @@ public class UserInterface {
         }
         return userOption;
     }
+    private void checkoutScreen() {
+
+        if (currentOrder.isEmpty()) {
+
+            System.out.println("\n⚠️: Cannot checkout with an empty order!");
+            return;
+        }
+
+        System.out.println("\n" + "=".repeat(50));
+        System.out.println("CHECKOUT - ORDER SUMMARY");
+        System.out.println("=".repeat(50));
+        System.out.println(currentOrder.toString());
+
+        System.out.print("Confirm order? (y/n): ");
+        String confirm = userInput.nextLine().trim();
+
+        if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes")) {
+
+            receiptManager.saveReceipt(currentOrder);
+            System.out.println("\nOrder completed successfully!");
+        } else {
+
+            System.out.println("\nOrder cancelled.");
+        }
+    }
 
 }
