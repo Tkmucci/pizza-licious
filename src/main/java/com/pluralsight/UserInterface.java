@@ -1,7 +1,9 @@
 package com.pluralsight;
 
 import com.pluralsight.enums.PizzaSize;
+import com.pluralsight.menuitems.GarlicKnots;
 import com.pluralsight.menuitems.Pizza;
+import com.pluralsight.menuitems.Topping;
 import com.pluralsight.store.Order;
 import com.pluralsight.store.ReceiptManager;
 
@@ -119,8 +121,7 @@ public class UserInterface {
         switch (userOption) {
 
             case 1:
-                System.out.println("Add pizza screen coming soon!!!");
-                checkoutScreen();
+                addPizzaMenuScreen();
             case 2:
                 System.out.println("Add Drink screen coming soon!!!");
                 break;
@@ -263,6 +264,61 @@ public class UserInterface {
 
             pizza.setStuffedCrust(true);
         }
+
+    }
+
+    private void addMeatToppings(Pizza pizza) {
+
+        System.out.println("""
+                \n--- MEAT TOPPINGS ---
+                
+                Pricing: 8" = $1.00, 12" = $2.00, 16" = $3.00
+                
+                1) Pepperoni
+                2) Sausage
+                3) Ham
+                4) Bacon
+                5) Chicken
+                6) Meatball
+                0) Done selecting meats
+                """);
+
+        while (true) {
+
+            System.out.print("Add meat (0 when done): ");
+
+            int choice = getUserOption(6);
+
+            if (choice == 0) break;
+
+            Topping meat = null;
+
+            switch (choice) {
+
+                case 1: meat = Topping.PEPPERONI; break;
+                case 2: meat = Topping.SAUSAGE; break;
+                case 3: meat = Topping.HAM; break;
+                case 4: meat = Topping.BACON; break;
+                case 5: meat = Topping.CHICKEN; break;
+                case 6: meat = Topping.MEATBALL; break;
+                default:
+                    System.out.println("Invalid option.");
+                    continue;
+            }
+
+            pizza.addMeat(meat);
+            System.out.println("Added " + meat.getName());
+        }
+
+    }
+
+    private void addGarlicKnotsScreen(){
+
+        GarlicKnots garlicKnots = new GarlicKnots();
+
+        currentOrder.addGarlicKnots(garlicKnots);
+
+        System.out.printf("\nGarlic Knots added to order! Price: $%.2f",garlicKnots.getPrice());
 
     }
 

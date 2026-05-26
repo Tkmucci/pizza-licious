@@ -157,4 +157,28 @@ public class Topping {
         return  name;
     }
 
+    //predefined topping constants for easy use
+    public static final Topping PEPPERONI = new Topping("Pepperoni", ToppingsType.MEAT);
+    public static final Topping SAUSAGE = new Topping("Sausage", ToppingsType.MEAT);
+    public static final Topping HAM = new Topping("Ham", ToppingsType.MEAT);
+    public static final Topping BACON = new Topping("Bacon", ToppingsType.MEAT);
+    public static final Topping CHICKEN = new Topping("Chicken", ToppingsType.MEAT);
+    public static final Topping MEATBALL = new Topping("Meatball", ToppingsType.MEAT);
+
+    public static final Topping MOZZARELLA = new Topping("Mozzarella", ToppingsType.CHEESE);
+    public static final Topping PARMESAN = new Topping("Parmesan", ToppingsType.CHEESE);
+    public static final Topping RICOTTA = new Topping("Ricotta", ToppingsType.CHEESE);
+    public static final Topping GOAT_CHEESE = new Topping("Goat Cheese", ToppingsType.CHEESE);
+    public static final Topping BUFFALO_CHEESE = new Topping("Buffalo", ToppingsType.CHEESE);
+
+    public static final Topping ONIONS = new Topping("Onions", ToppingsType.REGULAR);
+    public static final Topping MUSHROOMS = new Topping("Mushrooms", ToppingsType.REGULAR);
+    public static final Topping BELL_PEPPERS = new Topping("Bell Peppers", ToppingsType.REGULAR);
+    public static final Topping OLIVES = new Topping("Olives", ToppingsType.REGULAR);
+    public static final Topping TOMATOES = new Topping("Tomatoes", ToppingsType.REGULAR);
+    public static final Topping SPINACH = new Topping("Spinach", ToppingsType.REGULAR);
+    public static final Topping BASIL = new Topping("Basil", ToppingsType.REGULAR);
+    public static final Topping PINEAPPLE = new Topping("Pineapple", ToppingsType.REGULAR);
+    public static final Topping ANCHOVIES = new Topping("Anchovies", ToppingsType.REGULAR);
+
 }
