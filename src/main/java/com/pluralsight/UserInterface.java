@@ -1,13 +1,14 @@
 package com.pluralsight;
 
+import com.pluralsight.enums.DrinkSize;
 import com.pluralsight.enums.PizzaSize;
+import com.pluralsight.menuitems.Drink;
 import com.pluralsight.menuitems.GarlicKnots;
 import com.pluralsight.menuitems.Pizza;
 import com.pluralsight.menuitems.Topping;
 import com.pluralsight.store.Order;
 import com.pluralsight.store.ReceiptManager;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -44,6 +45,7 @@ public class UserInterface {
     private void startNewOrder() {
 
         System.out.print("Customer Name (For 'Guest' press Enter): ");
+
         String customerName = userInput.nextLine().trim();
 
         currentOrder = new Order(customerName);
@@ -93,59 +95,59 @@ public class UserInterface {
 
     private void orderScreen() {
 
-        int userOption;
+        while (true) {
 
-        do {
-
-            System.out.printf("""
-                            \n--- ORDER MENU ---
-                            Current items: %s
-                            Current total: $%.2f
-                            
-                            1) Add Pizza
-                            2) Add Drink
-                            3) Add Garlic Knots
-                            4) Checkout
-                            0) Cancel order)
-                            Option:
-                            """
-                    , currentOrder.getItemCount()
-                    , currentOrder.getTotal()
-            );
+                System.out.printf("""
+                                \n--- ORDER MENU ---
+                                Current items: %s
+                                Current total: $%.2f
+                                
+                                1) Add Pizza
+                                2) Add Drink
+                                3) Add Garlic Knots
+                                4) Checkout
+                                0) Cancel order)
+                                Option:
+                                """
+                        , currentOrder.getItemCount()
+                        , currentOrder.getTotal()
+                );
 
 
-            userOption = getUserOption(4);
+            int userOption = getUserOption(4);
 
 
-        } while (userOption < 0 || userOption > 4);
 
-        switch (userOption) {
 
-            case 1:
-                addPizzaMenuScreen();
-            case 2:
-                System.out.println("Add Drink screen coming soon!!!");
-                break;
-            case 3:
-                System.out.println("Add Garlic Knots screen coming soon!!!");
-                break;
-            case 4:
-                checkoutScreen();
-                break;
-            case 0:
+            switch (userOption) {
 
-                System.out.println("Canceling order, confirm?: ");
-                String userConfirmation = userInput.nextLine();
+                case 1:
+                    addPizzaMenuScreen();
+                    break;
+                case 2:
+                    addDrinkScreen();
+                    break;
+                case 3:
+                    addGarlicKnotsScreen();
+                    break;
+                case 4:
+                    checkoutScreen();
+                    break;
+                case 0:
 
-                if (userConfirmation.equalsIgnoreCase("yes") || userConfirmation.equalsIgnoreCase("y")) {
+                    System.out.println("Canceling order, confirm?: ");
+                    String userConfirmation = userInput.nextLine();
 
-                    return;
-                }
-                System.exit(0);
+                    if (userConfirmation.equalsIgnoreCase("yes") || userConfirmation.equalsIgnoreCase("y")) {
 
-            default:
-                System.out.println("⚠️:Enter a number between 1 and 4 and try again");
+                        return;
+                    }
+                    System.exit(0);
 
+                default:
+                    System.out.println("⚠️:Enter a number between 1 and 4 and try again");
+
+            }
         }
 
     }
@@ -252,19 +254,25 @@ public class UserInterface {
         Pizza pizza = new Pizza(size, crust, sauce);
 
         //add meats
+        addMeatToppings(pizza);
 
         //add cheeses
+        addCheeseToppings(pizza);
 
         //add regular toppings
+        addRegularToppings(pizza);
 
         //stuffed crust
+
         assert size != null;
-        System.out.print("\nWould you like stuffed crust? (+$" + getStuffedCrustPrice(size) + ") (y/n): ");
+        System.out.printf("\nWould you like stuffed crust? (+$%.2f) (y/n): ", getStuffedCrustPrice(size));
 
         if (userInput.nextLine().trim().equalsIgnoreCase("y") || userInput.nextLine().trim().equalsIgnoreCase("yes")) {
 
             pizza.setStuffedCrust(true);
         }
+
+        currentOrder.addPizza(pizza);
 
     }
 
@@ -459,6 +467,52 @@ public class UserInterface {
             pizza.addRegularTopping(topping);
             System.out.println("Added " + topping.getName());
         }
+
+    }
+
+    private void addDrinkScreen() {
+
+        System.out.println("""
+                \n--- ADD DRINK ---"
+                
+                Select drink size:
+                1) Small - $2.00
+                2) Medium - $3.50
+                3) Large - $4.50
+                Choose size:\s
+                """);
+        int sizeChoice = getUserOption(3);
+
+        DrinkSize size = null;
+        switch (sizeChoice) {
+            case 1:
+                size = DrinkSize.SMALL;
+                break;
+            case 2:
+                size = DrinkSize.MEDIUM;
+                break;
+            case 3:
+                size = DrinkSize.LARGE;
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+        }
+
+        //choosing a flavor
+        System.out.println("Enter flavor(Coke, Sprite, Lemonade...");
+
+        String flavor = userInput.nextLine().trim();
+
+        if (flavor.isEmpty()) {
+
+            flavor = "Lemonade";
+        }
+
+        Drink drink = new Drink(size, flavor);
+
+        currentOrder.addDrink(drink);
+
+        System.out.printf("Drink added to order! Price: $%.2f \n", drink.getPrice());
 
     }
 
