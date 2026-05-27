@@ -99,28 +99,26 @@ public class UserInterface {
 
         while (true) {
 
-                System.out.printf("""
-                                \n
-                                
-                                --- ORDER MENU ---
-                                Current items: %s
-                                Current total: $%.2f
-                                
-                                1) Add Pizza
-                                2) Add Drink
-                                3) Add Garlic Knots
-                                4) Checkout
-                                0) Cancel order)
-                                """
-                        , currentOrder.getItemCount()
-                        , currentOrder.getTotal()
-                );
+            System.out.printf("""
+                            \n
+                            
+                            --- ORDER MENU ---
+                            Current items: %s
+                            Current total: $%.2f
+                            
+                            1) Add Pizza
+                            2) Add Drink
+                            3) Add Garlic Knots
+                            4) Checkout
+                            0) Cancel order)
+                            """
+                    , currentOrder.getItemCount()
+                    , currentOrder.getTotal()
+            );
 
 
             System.out.print("Option: ");
             int userOption = getUserOption(4);
-
-
 
 
             switch (userOption) {
@@ -140,12 +138,13 @@ public class UserInterface {
 
                         case 1:
 
-                            System.out.println("Pizza (Pizza) ");
+                            addPremadePizzaMenuScreen();
                             break;
                         case 2:
 
                             System.out.println("Custom Pizza");
-                            addPizzaMenuScreen();
+                            addCustomPizzaMenuScreen();
+                            break;
                     }
 
                     break;
@@ -167,9 +166,8 @@ public class UserInterface {
                     if (userConfirmation.equalsIgnoreCase("yes") || userConfirmation.equalsIgnoreCase("y")) {
 
                         return;
-                    }
-                    else {
-                    orderScreen();
+                    } else {
+                        orderScreen();
                     }
 
                 default:
@@ -180,7 +178,10 @@ public class UserInterface {
 
     }
 
-    private void addPizzaMenuScreen() {
+    private void addPremadePizzaMenuScreen() {
+    }
+
+    private void addCustomPizzaMenuScreen() {
 
         //selecting the pizza size
         System.out.print("""
@@ -304,7 +305,7 @@ public class UserInterface {
         }
 
         currentOrder.addPizza(pizza);
-        System.out.printf("\nPizza added to order! Price: $%.2f",currentOrder.getTotal());
+        System.out.printf("\nPizza added to order! Price: $%.2f", currentOrder.getTotal());
 
     }
 
@@ -332,7 +333,7 @@ public class UserInterface {
 
             if (choice == 0) break;
 
-            Topping meat ;
+            Topping meat;
 
             switch (choice) {
 
@@ -588,7 +589,7 @@ public class UserInterface {
 
         if (userOption < 0 || userOption > optionMax) {
 
-            System.out.printf("⚠️: Wrong choice (choose 0 or %s) try again!\n",optionMax);
+            System.out.printf("⚠️: Wrong choice (choose 0 or %s) try again!\n", optionMax);
         }
         return userOption;
     }
@@ -607,7 +608,6 @@ public class UserInterface {
 
                 orderScreen();
             }
-
 
 
         }

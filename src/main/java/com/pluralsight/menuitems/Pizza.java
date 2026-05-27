@@ -222,4 +222,65 @@ public class Pizza extends OrderItem {
     public void setExtraCheese(boolean extraCheese) {
         this.extraCheese = extraCheese;
     }
+
+    //my premade pizzas
+    //the Classic — Marinara, Regular crust, Pepperoni + Sausage, Mozzarella
+    public static Pizza theClassic(PizzaSize size) {
+        Pizza pizza = new Pizza(size, CrustType.REGULAR, SauceType.MARINARA);
+        pizza.setName("The Classic");
+        pizza.addMeat(Topping.PEPPERONI);
+        pizza.addMeat(Topping.SAUSAGE);
+        pizza.addCheese(Topping.MOZZARELLA);
+        return pizza;
+    }
+
+    //BBQ Chicken — BBQ sauce, Thick crust, Chicken + Bacon, Mozzarella
+    public static Pizza bbqChicken(PizzaSize size) {
+        Pizza pizza = new Pizza(size, CrustType.THICK, SauceType.BBQ);
+        pizza.setName("BBQ Chicken");
+        pizza.addMeat(Topping.CHICKEN);
+        pizza.addMeat(Topping.BACON);
+        pizza.addCheese(Topping.MOZZARELLA);
+        return pizza;
+    }
+
+    //the Veggie — Pesto sauce, Thin crust, Mozzarella + Parmesan, veggies
+    public static Pizza theVeggie(PizzaSize size) {
+        Pizza pizza = new Pizza(size, CrustType.THIN, SauceType.PESTO);
+        pizza.setName("The Veggie");
+        pizza.addCheese(Topping.MOZZARELLA);
+        pizza.addCheese(Topping.PARMESAN);
+        pizza.addRegularTopping(Topping.MUSHROOMS);
+        pizza.addRegularTopping(Topping.BELL_PEPPERS);
+        pizza.addRegularTopping(Topping.ONIONS);
+        pizza.addRegularTopping(Topping.SPINACH);
+        pizza.addRegularTopping(Topping.TOMATOES);
+        return pizza;
+    }
+
+    //buffalo Blaze — Buffalo sauce, Regular crust, Chicken, Buffalo Cheese
+    public static Pizza buffaloBlaze(PizzaSize size) {
+        Pizza pizza = new Pizza(size, CrustType.REGULAR, SauceType.BUFFALO);
+        pizza.setName("Buffalo Blaze");
+        pizza.addMeat(Topping.CHICKEN);
+        pizza.addCheese(Topping.BUFFALO_CHEESE);
+        pizza.addCheese(Topping.MOZZARELLA);
+        return pizza;
+    }
+
+    //the Meat Lover — Marinara, Thick crust, all 6 meats, Mozzarella + Parmesan
+    public static Pizza meatLover(PizzaSize size) {
+        Pizza pizza = new Pizza(size, CrustType.THICK, SauceType.MARINARA);
+        pizza.setName("Meat Lover");
+        pizza.addMeat(Topping.PEPPERONI);
+        pizza.addMeat(Topping.SAUSAGE);
+        pizza.addMeat(Topping.HAM);
+        pizza.addMeat(Topping.BACON);
+        pizza.addMeat(Topping.CHICKEN);
+        pizza.addMeat(Topping.MEATBALL);
+        pizza.addCheese(Topping.MOZZARELLA);
+        pizza.addCheese(Topping.PARMESAN);
+        return pizza;
+    }
+
 }
