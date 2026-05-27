@@ -37,6 +37,11 @@ public class Drink extends OrderItem {
     @Override
     public String getDescription() {
 
+        if (count > 1) {
+            return String.format("%s %s Drink (%d) - $%.2f",
+                    size.getName(), flavor, count, getPrice());
+        }
+
         return String.format("%s %s Drink - $%.2f",
                 size.getName(), flavor, getPrice());
     }

@@ -32,7 +32,7 @@ public class Order {
         //formatting the customer name the way I prefer.
         if (customerName == null || customerName.isEmpty()) {
 
-            this.customerName = "Guest";
+            this.customerName = "Mucci's Guest";
         } else {
 
             //capitalizing first letter
@@ -84,7 +84,9 @@ public class Order {
     private GarlicKnots garlicKnots = null;
 
     public void addGarlicKnots(GarlicKnots newKnots) {
+
         if (garlicKnots == null) {
+
             garlicKnots = newKnots;
             items.add(garlicKnots);
         } else {
@@ -93,7 +95,9 @@ public class Order {
     }
 
     public int getGarlicKnotsCount() {
+
         if (garlicKnots == null) {
+
             return 0;
         }
         return garlicKnots.getCount();

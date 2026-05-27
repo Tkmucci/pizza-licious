@@ -370,7 +370,20 @@ public class UserInterface {
             pizza.setStuffedCrust(true);
         }
 
-        currentOrder.addPizza(pizza);
+        int numOfPizzas;
+
+        System.out.println("""
+                \n--- YOUR PIZZA ---
+                """ + pizza.getDescription());
+        System.out.print("How many do you want?: ");
+        numOfPizzas = getUserOption(1000000);
+
+        for (int i = 0; i < numOfPizzas; i++) {
+
+            currentOrder.addPizza(pizza);
+
+        }
+
         System.out.printf("\nPizza added to order! Price: $%.2f", currentOrder.getTotal());
 
     }
@@ -655,7 +668,7 @@ public class UserInterface {
 
         if (userOption < 0 || userOption > optionMax) {
 
-            System.out.printf("⚠️: Wrong choice (choose 0 or %s) try again!\n", optionMax);
+            System.out.printf("⚠️: Wrong choice (choose 0 - %s) try again!\n", optionMax);
         }
         return userOption;
     }
