@@ -58,35 +58,38 @@ public class UserInterface {
 
     private void homeScreen() {
 
-        System.out.println("""
-                --- HOME MENU ---
-                1) New Order
-                0) Exit""");
+        while (true) {
+            System.out.println("""
+                    --- HOME MENU ---
+                    1) New Order
+                    0) Exit""");
 
 
-        int userOption;
+            int userOption;
 
-        do {
+            do {
 
-            System.out.print("\nOption: ");
+                System.out.print("\nOption: ");
 
-            userOption = getUserOption(1);
+                userOption = getUserOption(1);
 
-        } while (userOption < 0 || userOption > 1);
+            } while (userOption < 0 || userOption > 1);
 
 
-        switch (userOption) {
+            switch (userOption) {
 
-            case 1:
-                startNewOrder();
-                break;
-            case 0:
+                case 1:
+                    startNewOrder();
+                    break;
+                case 0:
 
-                System.out.println("""
-                        \nThank you for visiting Mucci & Co.!
-                        Have a great day! 🍕""");
-                System.exit(0);
+                    System.out.println("""
+                            \nThank you for visiting Mucci & Co.!
+                            Have a great day! 🍕""");
+                    System.exit(0);
 
+
+            }
 
         }
 
@@ -594,11 +597,15 @@ public class UserInterface {
 
         if (!currentOrder.hasPizza()) {
 
-            System.out.println("⚠️: No pizza in your order — are you sure you want to continue?");
-            System.out.print("Continue anyway? (y/n): ");
+            System.out.println("""
+                    ⚠️: No pizza in your order — You must add a Drink or Garlic knots
+                    """);
+
+            System.out.print("Confirm order? (y/n): ");
             String proceed = userInput.nextLine().trim();
             if (!proceed.equalsIgnoreCase("y") && !proceed.equalsIgnoreCase("yes")) {
-                return;
+
+                orderScreen();
             }
 
 
