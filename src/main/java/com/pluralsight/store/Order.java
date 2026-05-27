@@ -47,10 +47,37 @@ public class Order {
     }
 
     public void addPizza(Pizza pizza){
+
+        // for premade pizzas, check if the same one already exists
+        for (OrderItem item : items) {
+
+            if (item instanceof Pizza existing) {
+
+                if (existing.matchesPremade(pizza.getName(), pizza.getSize())) {
+
+                    existing.incrementCount();
+                    return;
+                }
+            }
+        }
+        // custom pizzas or new premade — just add
         items.add(pizza);
     }
 
     public void addDrink(Drink drink){
+
+        //check if same size and flavor are already in the order
+        for (OrderItem item : items) {
+
+            if (item instanceof Drink existing) {
+
+                if (existing.drinkIsTheSame(drink.getSize(), drink.getFlavor())) {
+
+                    existing.incrementCount();
+                    return;
+                }
+            }
+        }
         items.add(drink);
     }
 
