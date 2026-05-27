@@ -61,15 +61,14 @@ public class UserInterface {
         System.out.println("""
                 --- HOME MENU ---
                 1) New Order
-                0) Exit
-                """);
+                0) Exit""");
 
 
         int userOption;
 
         do {
 
-            System.out.print("Option: ");
+            System.out.print("\nOption: ");
 
             userOption = getUserOption(1);
 
@@ -99,6 +98,7 @@ public class UserInterface {
 
                 System.out.printf("""
                                 \n
+                                
                                 --- ORDER MENU ---
                                 Current items: %s
                                 Current total: $%.2f
@@ -123,8 +123,30 @@ public class UserInterface {
             switch (userOption) {
 
                 case 1:
-                    addPizzaMenuScreen();
+
+                    System.out.println("""
+                            
+                            Order Type:
+                            1) Premade Pizza
+                            2) Custom Pizza""");
+                    System.out.print("\nChoice: ");
+
+                    int pizzaChoice = getUserOption(2);
+
+                    switch (pizzaChoice) {
+
+                        case 1:
+
+                            System.out.println("Pizza (Pizza) ");
+                            break;
+                        case 2:
+
+                            System.out.println("Custom Pizza");
+                            addPizzaMenuScreen();
+                    }
+
                     break;
+
                 case 2:
                     addDrinkScreen();
                     break;
@@ -144,7 +166,7 @@ public class UserInterface {
                         return;
                     }
                     else {
-                    System.exit(0);
+                    orderScreen();
                     }
 
                 default:
@@ -484,8 +506,8 @@ public class UserInterface {
                 
                 Select drink size:
                 1) Small - $2.00
-                2) Medium - $3.50
-                3) Large - $4.50
+                2) Medium - $2.50
+                3) Large - $3.00
                 """);
 
         System.out.print("Choose size: ");
@@ -540,8 +562,8 @@ public class UserInterface {
         return switch (size) {
 
             case SMALL_8 -> 1.00;
-            case MEDIUM_12 -> 1.20;
-            case LARGE_16 -> 1.25;
+            case MEDIUM_12 -> 1.50;
+            case LARGE_16 -> 2.00;
         };
     }
 
@@ -563,7 +585,7 @@ public class UserInterface {
 
         if (userOption < 0 || userOption > optionMax) {
 
-            System.out.printf("⚠️: Wrong choice (choose 0 or %s) try again!",optionMax);
+            System.out.printf("⚠️: Wrong choice (choose 0 or %s) try again!\n",optionMax);
         }
         return userOption;
     }

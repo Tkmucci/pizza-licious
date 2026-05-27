@@ -3,8 +3,8 @@ package com.pluralsight.enums;
 public enum DrinkSize {
 
     SMALL(2.00, "Small"),
-    MEDIUM(3.50, "Medium"),
-    LARGE(4.50, "Large");
+    MEDIUM(2.50, "Medium"),
+    LARGE(3.00, "Large");
 
     private final double price;
     private final String name;

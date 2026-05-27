@@ -58,6 +58,15 @@ public class Order {
         items.add(garlicknots);
     }
 
+    public boolean hasPizza() {
+        for (OrderItem item : items) {
+            if (item instanceof Pizza) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public double getTotal(){
 
         double total = 0.0;
@@ -82,7 +91,7 @@ public class Order {
 
     public String getReceiptSaveName(){
 
-        DateTimeFormatter receiptTimeFormatter = DateTimeFormatter.ofPattern("yyyMMdd-HHmmss");
+        DateTimeFormatter receiptTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
 
         return orderTime.format(receiptTimeFormatter) + ".txt";
     }

@@ -20,8 +20,8 @@ public class Pizza extends OrderItem {
     private boolean extraMeat;
     private boolean extraCheese;
 
-
     public Pizza(PizzaSize size, CrustType crustType, SauceType sauce) {
+
 
         super("Custom Pizza", size.getBasePrice());
         this.size = size;
