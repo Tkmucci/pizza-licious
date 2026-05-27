@@ -20,6 +20,7 @@ public class Pizza extends OrderItem {
     private boolean extraMeat;
     private boolean extraCheese;
 
+
     public Pizza(PizzaSize size, CrustType crustType, SauceType sauce) {
 
         super("Custom Pizza", size.getBasePrice());
@@ -73,24 +74,12 @@ public class Pizza extends OrderItem {
 
     private double getStuffedCrustPrice() {
 
-        switch (size) {
-
-            case SMALL_8:
-
-                return 1.00;
-
-            case MEDIUM_12:
-
-                return 1.50;
-
-            case LARGE_16:
-
-                return 2.00;
-
-            default:
-
-                return 0.00;
-        }
+        return switch (size) {
+            case SMALL_8 -> 1.00;
+            case MEDIUM_12 -> 1.50;
+            case LARGE_16 -> 2.00;
+            default -> 0.00;
+        };
     }
 
     @Override
@@ -170,11 +159,11 @@ public class Pizza extends OrderItem {
         this.size = size;
     }
 
-    public String getCrustType() {
+    public CrustType getCrustType() {
         return crustType;
     }
 
-    public void setCrustType(String crustType) {
+    public void setCrustType(CrustType crustType) {
         this.crustType = crustType;
     }
 
@@ -202,11 +191,11 @@ public class Pizza extends OrderItem {
         this.regularToppings = regularToppings;
     }
 
-    public String getSauce() {
+    public SauceType getSauce() {
         return sauce;
     }
 
-    public void setSauce(String sauce) {
+    public void setSauce(SauceType sauce) {
         this.sauce = sauce;
     }
 

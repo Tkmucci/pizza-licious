@@ -58,7 +58,7 @@ public class UserInterface {
 
     private void homeScreen() {
 
-        System.out.print("""
+        System.out.println("""
                 --- HOME MENU ---
                 1) New Order
                 0) Exit
@@ -108,13 +108,13 @@ public class UserInterface {
                                 3) Add Garlic Knots
                                 4) Checkout
                                 0) Cancel order)
-                                Option:
                                 """
                         , currentOrder.getItemCount()
                         , currentOrder.getTotal()
                 );
 
 
+            System.out.print("Option: ");
             int userOption = getUserOption(4);
 
 
@@ -148,7 +148,7 @@ public class UserInterface {
                     }
 
                 default:
-                    System.out.println("⚠️:Enter a number between 1 and 4 and try again");
+
 
             }
         }
@@ -307,7 +307,7 @@ public class UserInterface {
 
             if (choice == 0) break;
 
-            Topping meat = null;
+            Topping meat ;
 
             switch (choice) {
 
@@ -479,18 +479,19 @@ public class UserInterface {
 
     private void addDrinkScreen() {
 
-        System.out.println("""
-                \n--- ADD DRINK ---"
+        System.out.print("""
+                \n--- ADD DRINK ---
                 
                 Select drink size:
                 1) Small - $2.00
                 2) Medium - $3.50
                 3) Large - $4.50
-                Choose size:\s
                 """);
+
+        System.out.print("Choose size: ");
         int sizeChoice = getUserOption(3);
 
-        DrinkSize size = null;
+        DrinkSize size;
         switch (sizeChoice) {
             case 1:
                 size = DrinkSize.SMALL;
@@ -503,6 +504,7 @@ public class UserInterface {
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
+                return;
         }
 
         //choosing a flavor
