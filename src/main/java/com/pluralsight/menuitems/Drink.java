@@ -7,6 +7,7 @@ public class Drink extends OrderItem {
 
     private DrinkSize size;
     private String flavor;
+    private int count;
 
     public Drink(DrinkSize size, String flavor) {
 
@@ -14,12 +15,23 @@ public class Drink extends OrderItem {
 
         this.size = size;
         this.flavor = flavor;
+        this.count = 1;
+    }
+
+    public void incrementCount() {
+
+        count++;
+    }
+
+    public boolean drinkIsTheSame(DrinkSize size, String flavor) {
+
+        return this.size == size && this.flavor.equalsIgnoreCase(flavor) ;
     }
 
     @Override
     public double calculatePrice(){
 
-        return size.getPrice();
+        return size.getPrice() * count;
     }
 
     @Override
