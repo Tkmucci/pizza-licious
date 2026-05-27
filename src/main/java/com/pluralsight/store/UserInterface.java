@@ -592,10 +592,17 @@ public class UserInterface {
 
     private void checkoutScreen() {
 
-        if (currentOrder.isEmpty()) {
+        if (!currentOrder.hasPizza()) {
 
-            System.out.println("\n⚠️: Cannot checkout with an empty order!");
-            homeScreen();
+            System.out.println("⚠️: No pizza in your order — are you sure you want to continue?");
+            System.out.print("Continue anyway? (y/n): ");
+            String proceed = userInput.nextLine().trim();
+            if (!proceed.equalsIgnoreCase("y") && !proceed.equalsIgnoreCase("yes")) {
+                return;
+            }
+
+
+
         }
 
         System.out.println("--- CHECKOUT ---");
