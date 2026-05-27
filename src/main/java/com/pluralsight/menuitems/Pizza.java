@@ -19,6 +19,7 @@ public class Pizza extends OrderItem {
     private boolean stuffedCrust;
     private boolean extraMeat;
     private boolean extraCheese;
+    private int count;
 
     public Pizza(PizzaSize size, CrustType crustType, SauceType sauce) {
 
@@ -33,6 +34,24 @@ public class Pizza extends OrderItem {
         this.meats = new ArrayList<>();
         this.cheeses = new ArrayList<>();
         this.regularToppings = new ArrayList<>();
+        this.count = 1;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void incrementCount() {
+        count++;
+    }
+
+
+    public boolean matchesPremade(String pizzaName, PizzaSize size) {
+        return this.name.equals(pizzaName) && this.size == size;
     }
 
     @Override
@@ -69,7 +88,7 @@ public class Pizza extends OrderItem {
             total += getStuffedCrustPrice();
         }
 
-        return total;
+        return total * count;
     }
 
     private double getStuffedCrustPrice() {
@@ -86,7 +105,18 @@ public class Pizza extends OrderItem {
     public String getDescription() {
 
         StringBuilder orderDescription = new StringBuilder();
-        orderDescription.append(size.getDisplay()).append(" ").append(name).append("\n");
+
+        if (count > 1) {
+
+            orderDescription.append(size.getDisplay()).append(" ").append(name)
+                    .append(" (").append(count).append(")\n");
+
+        } else {
+
+            orderDescription.append(size.getDisplay()).append(" ").append(name).append("\n");
+
+        }
+
         orderDescription.append("  Crust: ").append(crustType).append("\n");
         orderDescription.append("  Sauce: ").append(sauce).append("\n");
 
