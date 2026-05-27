@@ -54,8 +54,22 @@ public class Order {
         items.add(drink);
     }
 
-    public void addGarlicKnots(GarlicKnots garlicknots){
-        items.add(garlicknots);
+    private GarlicKnots garlicKnots = null;
+
+    public void addGarlicKnots(GarlicKnots newKnots) {
+        if (garlicKnots == null) {
+            garlicKnots = newKnots;
+            items.add(garlicKnots);
+        } else {
+            garlicKnots.incrementCount();
+        }
+    }
+
+    public int getGarlicKnotsCount() {
+        if (garlicKnots == null) {
+            return 0;
+        }
+        return garlicKnots.getCount();
     }
 
     public boolean hasPizza() {

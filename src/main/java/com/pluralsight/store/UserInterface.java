@@ -179,6 +179,72 @@ public class UserInterface {
     }
 
     private void addPremadePizzaMenuScreen() {
+
+        System.out.println("""
+                
+                --- PREMADE PIZZAS ---
+                1) The Classic      - Marinara, Regular crust, Pepperoni + Sausage, Mozzarella
+                2) BBQ Chicken      - BBQ sauce, Thick crust, Chicken + Bacon, Mozzarella
+                3) The Veggie       - Pesto sauce, Thin crust, Mozzarella + Parmesan, Mixed Veggies
+                4) Buffalo Blaze    - Buffalo sauce, Regular crust, Chicken, Buffalo + Mozzarella
+                5) The Meat Lover   - Marinara, Thick crust, All 6 Meats, Mozzarella + Parmesan
+                """);
+
+        System.out.print("Choose pizza: ");
+        int pizzaChoice = getUserOption(5);
+
+        System.out.println("""
+                
+                Select size:
+                1) Small  (8")
+                2) Medium (12")
+                3) Large  (16")
+                """);
+
+        System.out.print("Choose size: ");
+        int sizeChoice = getUserOption(3);
+
+        PizzaSize size;
+        switch (sizeChoice) {
+            case 1:
+                size = PizzaSize.SMALL_8;
+                break;
+            case 2:
+                size = PizzaSize.MEDIUM_12;
+                break;
+            case 3:
+                size = PizzaSize.LARGE_16;
+                break;
+            default:
+                System.out.println("Invalid size. Pizza not added.");
+                return;
+        }
+
+        Pizza pizza;
+        switch (pizzaChoice) {
+            case 1:
+                pizza = Pizza.theClassic(size);
+                break;
+            case 2:
+                pizza = Pizza.bbqChicken(size);
+                break;
+            case 3:
+                pizza = Pizza.theVeggie(size);
+                break;
+            case 4:
+                pizza = Pizza.buffaloBlaze(size);
+                break;
+            case 5:
+                pizza = Pizza.meatLover(size);
+                break;
+            default:
+                System.out.println("Invalid choice. Pizza not added.");
+                return;
+        }
+
+        currentOrder.addPizza(pizza);
+        System.out.printf("%n%s added to order! Price: $%.2f%n", pizza.getName(), pizza.getPrice());
+
     }
 
     private void addCustomPizzaMenuScreen() {
@@ -188,9 +254,9 @@ public class UserInterface {
                 \n--- BUILD YOUR PIZZA ---
                 
                 Select pizza size:
-                1) Small 8 - $8.50
-                2) Medium 12 - $12.00
-                3) Large 16 - $16.50
+                1) Small 8
+                2) Medium 12
+                3) Large 16
                 Choose size:\s
                 """);
 
