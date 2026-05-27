@@ -1,23 +1,26 @@
 package com.pluralsight.menuitems;
 
 import com.pluralsight.abstracts.OrderItem;
+import com.pluralsight.enums.CrustType;
 import com.pluralsight.enums.PizzaSize;
+import com.pluralsight.enums.SauceType;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pizza extends OrderItem {
 
     private PizzaSize size;
-    private String crustType;
+    private CrustType crustType;
     private List<Topping> meats;
     private List<Topping> cheeses;
     private List<Topping> regularToppings;
-    private String sauce;
+    private SauceType sauce;
     private boolean stuffedCrust;
     private boolean extraMeat;
     private boolean extraCheese;
 
-    public Pizza(PizzaSize size, String crustType, String sauce) {
+    public Pizza(PizzaSize size, CrustType crustType, SauceType sauce) {
 
         super("Custom Pizza", size.getBasePrice());
         this.size = size;

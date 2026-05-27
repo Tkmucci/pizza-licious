@@ -1,7 +1,9 @@
 package com.pluralsight.store;
 
+import com.pluralsight.enums.CrustType;
 import com.pluralsight.enums.DrinkSize;
 import com.pluralsight.enums.PizzaSize;
+import com.pluralsight.enums.SauceType;
 import com.pluralsight.menuitems.Drink;
 import com.pluralsight.menuitems.GarlicKnots;
 import com.pluralsight.menuitems.Pizza;
@@ -197,22 +199,23 @@ public class UserInterface {
                 """);
         int crustChoice = getUserOption(4);
 
-        String crust = "";
+        CrustType crust;
         switch (crustChoice) {
             case 1:
-                crust = "Thin";
+                crust = CrustType.THIN;
                 break;
             case 2:
-                crust = "Regular";
+                crust = CrustType.REGULAR;
                 break;
             case 3:
-                crust = "Thick";
+                crust = CrustType.THICK;
                 break;
             case 4:
-                crust = "Cauliflower";
+                crust = CrustType.CAULIFLOWER;
                 break;
             default:
                 System.out.println("Invalid crust. Pizza not added.");
+                return;
         }
 
         //select sauce
@@ -228,25 +231,25 @@ public class UserInterface {
                 """);
         int sauceChoice = getUserOption(6);
 
-        String sauce = "";
+        SauceType sauce;
         switch (sauceChoice) {
             case 1:
-                sauce = "Marinara";
+                sauce = SauceType.MARINARA;
                 break;
             case 2:
-                sauce = "Alfredo";
+                sauce = SauceType.ALFREDO;
                 break;
             case 3:
-                sauce = "Pesto";
+                sauce = SauceType.PESTO;
                 break;
             case 4:
-                sauce = "BBQ";
+                sauce = SauceType.BBQ;
                 break;
             case 5:
-                sauce = "Buffalo";
+                sauce = SauceType.BUFFALO;
                 break;
             case 6:
-                sauce = "Olive Oil";
+                sauce = SauceType.OLIVE_OIL;
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
