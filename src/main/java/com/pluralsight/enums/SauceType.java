@@ -2,6 +2,7 @@ package com.pluralsight.enums;
 
 public enum SauceType {
 
+    //declaring the sauce names
     MARINARA("Marinara"),
     ALFREDO("Alfredo"),
     PESTO("Pesto"),
@@ -9,14 +10,12 @@ public enum SauceType {
     BUFFALO("Buffalo"),
     OLIVE_OIL("Olive Oil");
 
+    //my variable
     private String sauceName;
 
+    //my constructor
     SauceType(String sauceName) {
         this.sauceName = sauceName;
-    }
-
-    public String getSauceName() {
-        return sauceName;
     }
 
     @Override
