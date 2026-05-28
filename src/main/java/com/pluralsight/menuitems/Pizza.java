@@ -1,5 +1,6 @@
 package com.pluralsight.menuitems;
 
+//importing my other classes so I can use their data
 import com.pluralsight.abstracts.OrderItem;
 import com.pluralsight.enums.CrustType;
 import com.pluralsight.enums.PizzaSize;
@@ -10,6 +11,7 @@ import java.util.List;
 
 public class Pizza extends OrderItem {
 
+    //my declared variables
     private PizzaSize size;
     private CrustType crustType;
     private List<Topping> meats;
@@ -21,6 +23,7 @@ public class Pizza extends OrderItem {
     private boolean extraCheese;
     private int count;
 
+    // my constructor
     public Pizza(PizzaSize size, CrustType crustType, SauceType sauce) {
 
 
@@ -45,15 +48,18 @@ public class Pizza extends OrderItem {
         return count;
     }
 
+    //increasing the number of pizzas bought
     public void incrementCount() {
         count++;
     }
 
-
+    //determining if the same pizza is order so we can increase the count number
     public boolean matchesPremade(String pizzaName, PizzaSize size) {
         return this.name.equals(pizzaName) && this.size == size;
     }
 
+
+    //calculating the pizza total price multiplying it by the number of pizzas
     @Override
     public double calculatePrice() {
         double total = size.getBasePrice();
@@ -91,6 +97,7 @@ public class Pizza extends OrderItem {
         return total * count;
     }
 
+    //if a user chooses to get stuffed crust this is the method that I use to add to the total
     private double getStuffedCrustPrice() {
 
         return switch (size) {
@@ -101,11 +108,14 @@ public class Pizza extends OrderItem {
         };
     }
 
+    //this is how I print my pizzas in the receipt. i formatted it how I want it to appear
     @Override
     public String getDescription() {
 
+        //string builder that I am using to structure my printout
         StringBuilder orderDescription = new StringBuilder();
 
+        //checking if the count is more than 1 so a different printout that shows the number of pizzas ordered
         if (count > 1) {
 
             orderDescription.append(size.getDisplay()).append(" ").append(name)
@@ -117,9 +127,11 @@ public class Pizza extends OrderItem {
 
         }
 
+        //displaying what crust and sauce is chosen by the user.
         orderDescription.append("  Crust: ").append(crustType).append("\n");
         orderDescription.append("  Sauce: ").append(sauce).append("\n");
 
+        //checking if the user selected meat
         if (!meats.isEmpty()) {
 
             orderDescription.append("  Meats: ");

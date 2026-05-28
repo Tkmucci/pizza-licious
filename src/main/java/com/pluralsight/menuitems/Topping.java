@@ -39,6 +39,7 @@ public record Topping(String name, ToppingsType type) {
         };
     }
 
+    //getting the meat topping price
     private double getMeatPrice(PizzaSize size) {
 
         return switch (size) {
@@ -51,6 +52,7 @@ public record Topping(String name, ToppingsType type) {
         };
     }
 
+    //getting the extra meat toppings price
     private double getExtraMeatPrice(PizzaSize size) {
 
         return switch (size) {
@@ -64,6 +66,7 @@ public record Topping(String name, ToppingsType type) {
         };
     }
 
+    //getting the cheese toppings price
     public double getCheesePrice(PizzaSize size) {
 
         return switch (size) {
@@ -77,6 +80,7 @@ public record Topping(String name, ToppingsType type) {
         };
     }
 
+    //getting the extra cheese toppings price
     public double getExtraCheesePrice(PizzaSize size) {
 
         return switch (size) {
