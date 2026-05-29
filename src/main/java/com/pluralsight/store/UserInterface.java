@@ -714,7 +714,7 @@ public class UserInterface {
 
     private void checkoutScreen() {
 
-        if (!currentOrder.hasPizza() && (currentOrder.hasGarlicKnots() || currentOrder.hasDrink())) {
+        if (currentOrder.hasPizza() || (currentOrder.hasGarlicKnots() || currentOrder.hasDrink())) {
 
             System.out.println("         --- CHECKOUT ---");
 
@@ -730,7 +730,7 @@ public class UserInterface {
             } else {
 
                 System.out.println("\nOrder cancelled.\n");
-                orderScreen();
+
             }
         } else {
             System.out.println("""
@@ -742,7 +742,7 @@ public class UserInterface {
 
             //String proceed = userInput.nextLine().trim();
 
-                orderScreen();
+
         }
     }
 
