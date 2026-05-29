@@ -99,14 +99,14 @@ public class Order {
         }
     }
 
-//    public int getGarlicKnotsCount() {
-//
-//        if (garlicKnots == null) {
-//
-//            return 0;
-//        }
-//        return garlicKnots.getCount();
-//    }
+    public int getGarlicKnotsCount() {
+
+        if (garlicKnots == null) {
+
+            return 0;
+        }
+        return garlicKnots.getCount();
+    }
 
     //checking if the order has pizza
     public boolean hasPizza() {

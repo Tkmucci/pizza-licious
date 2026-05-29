@@ -36,7 +36,7 @@ public class ReceiptManager {
             filenameWriter.write(order.toString());
 
             //confirming that the file creation was successful.
-            System.out.println("Receipt saved: ");
+            System.out.println("Receipt saved: " + saveReceiptAs);
 
         }
         catch (IOException e) {
