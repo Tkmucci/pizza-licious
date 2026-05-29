@@ -36,6 +36,6 @@ public class GarlicKnots extends OrderItem {
     //printing out a formatted description of the transaction
     @Override
     public String getDescription() {
-        return String.format("Garlic Knots (%d) - $%.2f", count, getPrice());
+        return String.format("Garlic Knots x (%d) - $%.2f", count, getPrice());
     }
 }

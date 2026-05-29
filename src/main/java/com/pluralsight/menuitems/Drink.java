@@ -44,7 +44,7 @@ public class Drink extends OrderItem {
     public String getDescription() {
 
         if (count > 1) {
-            return String.format("%s %s Drinks (%d) - $%.2f",
+            return String.format("%s %s Drinks x (%d) - $%.2f",
                     size.getName(), flavor, count, getPrice());
         }
 

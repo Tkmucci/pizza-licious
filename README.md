@@ -8,10 +8,12 @@ The Java back-end for the [mucci-licious-ui](https://github.com/Tkmucci/mucci-li
 
 - Build a **custom pizza** from scratch — choose size, crust, sauce, meat toppings, cheese toppings, regular toppings, and optional stuffed crust
 - Order from a selection of **5 premade pizzas**
-- Add **drinks** with a custom flavor and size
-- Add **garlic knots** as a side
+- Add **drinks** with a custom flavor and size — specify quantity at time of order
+- Add **garlic knots** as a side — specify quantity at time of order
 - Smart cart that **stacks duplicates** (e.g., adding the same premade pizza increments quantity rather than creating a new line item)
-- Auto-saves a formatted **receipt** as a timestamped `.txt` file in the `receipts/` folder on checkout
+- **Order validation** — checkout is blocked if the cart is empty; warns the user and returns to the order screen
+- **Buffering effect** on screen transitions for a smoother console UX
+- Auto-saves a formatted **receipt** as a timestamped `.txt` file in the `receipts/` folder on checkout; the saved path is printed on confirmation
 
 ---
 

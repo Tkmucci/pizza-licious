@@ -119,7 +119,7 @@ public class Pizza extends OrderItem {
         if (count > 1) {
 
             orderDescription.append(size.getDisplay()).append(" ").append(name)
-                    .append(" (").append(count).append(")\n");
+                    .append(" x (").append(count).append(")\n");
 
         } else {
 
