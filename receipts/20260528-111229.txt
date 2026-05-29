@@ -1,0 +1,19 @@
+==================================
+MUCCI & CO. ARTISAN PIZZA
+==================================
+Customer: Larry
+Order Time: 05/28/2026 11:12:29
+----------------------------------
+ITEMS: 
+1. 16" BBQ Chicken
+  Crust: Thick
+  Sauce: BBQ
+  Meats: Chicken, Bacon
+  Cheeses: Mozzarella
+  Price: $24.75
+
+----------------------------------
+Total: $24.75
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Thank you, please call again!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

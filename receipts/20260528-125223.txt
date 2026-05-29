@@ -1,0 +1,20 @@
+==================================
+MUCCI & CO. ARTISAN PIZZA
+==================================
+Customer: Legend
+Order Time: 05/28/2026 12:52:23
+----------------------------------
+ITEMS: 
+1. 16" Meat Lover
+  Crust: Thick
+  Sauce: Marinara
+  Meats: Pepperoni, Sausage, Ham, Bacon, Chicken, Meatball
+  Cheeses: Mozzarella, Parmesan
+  Price: $39.00
+2. Garlic Knots (1) - $1.50
+
+----------------------------------
+Total: $40.50
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Thank you, please call again!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

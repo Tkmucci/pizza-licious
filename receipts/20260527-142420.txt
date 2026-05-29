@@ -1,0 +1,20 @@
+==================================
+MUCCI & CO. ARTISAN PIZZA
+==================================
+Customer: Mucci
+Order Time: 05/27/2026 14:24:20
+----------------------------------
+ITEMS: 
+1. 16" Custom Pizza (5)
+  Crust: Cauliflower
+  Sauce: Buffalo
+  Meats: Meatball
+  Cheeses: Buffalo
+  Toppings: Pineapple
+  Price: $108.75
+
+----------------------------------
+Total: $108.75
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Thank you, please call again!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

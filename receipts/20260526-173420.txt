@@ -1,0 +1,19 @@
+==================================
+MUCCI & CO. ARTISAN PIZZA
+==================================
+Customer: Guest
+Order Time: 05/26/2026 17:34:20
+----------------------------------
+ITEMS: 
+1. 16" Custom Pizza
+  Crust: Thick
+  Sauce: BBQ
+  Meats: Chicken (EXTRA)
+  Stuffed Crust
+  Price: $23.00
+
+----------------------------------
+Total: $23.00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Thank you, please call again!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

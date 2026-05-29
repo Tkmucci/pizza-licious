@@ -1,0 +1,19 @@
+==================================
+MUCCI & CO. ARTISAN PIZZA
+==================================
+Customer: Mucci
+Order Time: 05/28/2026 15:08:24
+----------------------------------
+ITEMS: 
+1. 16" Meat Lover (2)
+  Crust: Thick
+  Sauce: Marinara
+  Meats: Pepperoni, Sausage, Ham, Bacon, Chicken, Meatball
+  Cheeses: Mozzarella, Parmesan
+  Price: $78.00
+
+----------------------------------
+Total: $78.00
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  Thank you, please call again!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
