@@ -32,7 +32,7 @@ public class Drink extends OrderItem {
         return this.size == size && this.flavor.equalsIgnoreCase(flavor) ;
     }
 
-    //my method that calculates the price based on how many drinks have been orderd
+    //my method that calculates the price based on how many drinks have been ordered
     @Override
     public double calculatePrice(){
 
@@ -44,7 +44,7 @@ public class Drink extends OrderItem {
     public String getDescription() {
 
         if (count > 1) {
-            return String.format("%s %s Drink (%d) - $%.2f",
+            return String.format("%s %s Drinks (%d) - $%.2f",
                     size.getName(), flavor, count, getPrice());
         }
 

@@ -13,16 +13,19 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Scanner userInput;
+    //declaring my variables
+    private final Scanner userInput;
     private Order currentOrder;
-    private ReceiptManager receiptManager;
+    private final ReceiptManager receiptManager;
 
+    // my constructor
     public UserInterface() {
 
         this.userInput = new Scanner(System.in);
         this.receiptManager = new ReceiptManager();
     }
 
+    //my run method that I will use to access userInterface from the runApp
     public void run() {
 
         showWelcomeMessage();
@@ -33,6 +36,7 @@ public class UserInterface {
 
     }
 
+    //my method to show my nice welcome message
     private void showWelcomeMessage() {
 
         //testing the method
@@ -42,6 +46,7 @@ public class UserInterface {
 
     }
 
+    //my method that I use to start a new order
     private void startNewOrder() {
 
         System.out.print("Customer Name (For 'Guest' press Enter): ");
@@ -56,6 +61,7 @@ public class UserInterface {
 
     }
 
+    //my method that I use to display the home menu options
     private void homeScreen() {
 
         while (true) {
@@ -65,6 +71,7 @@ public class UserInterface {
                     0) Exit""");
 
 
+            //validating my user input
             int userOption;
 
             do {
@@ -75,7 +82,7 @@ public class UserInterface {
 
             } while (userOption < 0 || userOption > 1);
 
-
+            //my switch statement that I use to process the user option
             switch (userOption) {
 
                 case 1:
@@ -95,13 +102,13 @@ public class UserInterface {
 
     }
 
+    //my order screen method that I use to process the oder screen options for the user
     private void orderScreen() {
 
         while (true) {
 
             System.out.printf("""
                             \n
-                            
                             --- ORDER MENU ---
                             Current items: %s
                             Current total: $%.2f
@@ -125,6 +132,7 @@ public class UserInterface {
 
                 case 1:
 
+                    //my pizza case that I use to process the pizza option for the user
                     System.out.println("""
                             
                             Order Type:
@@ -178,6 +186,7 @@ public class UserInterface {
 
     }
 
+    //my method to process the user's premade choice selection
     private void addPremadePizzaMenuScreen() {
 
         System.out.println("""
@@ -204,6 +213,7 @@ public class UserInterface {
         System.out.print("Choose size: ");
         int sizeChoice = getUserOption(3);
 
+        //processing pizza size selection
         PizzaSize size;
         switch (sizeChoice) {
             case 1:
@@ -220,6 +230,7 @@ public class UserInterface {
                 return;
         }
 
+        //processing pizza choice selection
         Pizza pizza;
         switch (pizzaChoice) {
             case 1:
@@ -242,11 +253,28 @@ public class UserInterface {
                 return;
         }
 
-        currentOrder.addPizza(pizza);
+        numOfPizza(pizza);
         System.out.printf("%n%s added to order! Price: $%.2f%n", pizza.getName(), pizza.getPrice());
 
     }
 
+    //processing the number of pizzas a person wants to order
+    private void numOfPizza(Pizza pizza) {
+
+        System.out.println("""
+                \n--- YOUR PIZZA ---
+                """ + pizza.getDescription());
+        System.out.print("How many do you want?: ");
+        int numPizzas = getUserOption(1000000);
+
+        for (int i = 0; i < numPizzas; i++) {
+
+            currentOrder.addPizza(pizza);
+
+        }
+    }
+
+    //processing a custom pizza if the user chooses this option
     private void addCustomPizzaMenuScreen() {
 
         //selecting the pizza size
@@ -291,6 +319,7 @@ public class UserInterface {
                 """);
         int crustChoice = getUserOption(4);
 
+        //selecting crust type
         CrustType crust;
         switch (crustChoice) {
             case 1:
@@ -323,6 +352,7 @@ public class UserInterface {
                 """);
         int sauceChoice = getUserOption(6);
 
+        //selecting sauce type
         SauceType sauce;
         switch (sauceChoice) {
             case 1:
@@ -365,29 +395,19 @@ public class UserInterface {
 
         String stuffedAnswer = userInput.nextLine().trim();
 
+        //confirming the user wants to add stuffed crust
         if (stuffedAnswer.equalsIgnoreCase("y") || stuffedAnswer.equalsIgnoreCase("yes")) {
 
             pizza.setStuffedCrust(true);
         }
 
-        int numOfPizzas;
-
-        System.out.println("""
-                \n--- YOUR PIZZA ---
-                """ + pizza.getDescription());
-        System.out.print("How many do you want?: ");
-        numOfPizzas = getUserOption(1000000);
-
-        for (int i = 0; i < numOfPizzas; i++) {
-
-            currentOrder.addPizza(pizza);
-
-        }
+        numOfPizza(pizza);
 
         System.out.printf("\nPizza added to order! Price: $%.2f", currentOrder.getTotal());
 
     }
 
+    //adding a meat topping to the pizza
     private void addMeatToppings(Pizza pizza) {
 
         System.out.println("""
@@ -404,6 +424,7 @@ public class UserInterface {
                 0) Done selecting meats
                 """);
 
+        //processing the meat topping options
         while (true) {
 
             System.out.print("Add meat (0 when done): ");
@@ -455,6 +476,7 @@ public class UserInterface {
 
     }
 
+    //adding cheese on the pizza
     private void addCheeseToppings(Pizza pizza) {
 
         System.out.println("""
@@ -476,7 +498,7 @@ public class UserInterface {
 
             if (choice == 0) break;
 
-            Topping cheese = null;
+            Topping cheese;
             switch (choice) {
 
                 case 1:
@@ -515,6 +537,7 @@ public class UserInterface {
 
     }
 
+    //adding regular toppings and showing the user that they are free
     private void addRegularToppings(Pizza pizza) {
 
         System.out.print("""
@@ -540,7 +563,7 @@ public class UserInterface {
 
             if (choice == 0) break;
 
-            Topping topping = null;
+            Topping topping;
 
             switch (choice) {
 
@@ -582,6 +605,7 @@ public class UserInterface {
 
     }
 
+    //adding a drink to the order
     private void addDrinkScreen() {
 
         System.out.print("""
@@ -624,22 +648,36 @@ public class UserInterface {
 
         Drink drink = new Drink(size, flavor);
 
-        currentOrder.addDrink(drink);
+        System.out.println("How many drinks?: ");
+
+        int drinkCount = getUserOption(1000000);
+
+        for (int i = 0; i < drinkCount; i++) {
+
+            currentOrder.addDrink(drink);
+        }
 
         System.out.printf("Drink added to order! Price: $%.2f \n", drink.getPrice());
 
     }
 
+    //adding garlic knots to the order and processing how many they want to order
     private void addGarlicKnotsScreen() {
 
         GarlicKnots garlicKnots = new GarlicKnots();
 
-        currentOrder.addGarlicKnots(garlicKnots);
+        System.out.println("How many Garlic Knots?: ");
+        int garlicKnotsCount = getUserOption(1000000);
+        for (int i = 0; i < garlicKnotsCount; i++) {
+
+            currentOrder.addGarlicKnots(garlicKnots);
+        }
 
         System.out.printf("\nGarlic Knots added to order! Price: $%.2f", garlicKnots.getPrice());
 
     }
 
+    //getting the price of the stuffed crust
     private double getStuffedCrustPrice(PizzaSize size) {
 
         return switch (size) {
@@ -650,6 +688,7 @@ public class UserInterface {
         };
     }
 
+    //validating the user for numbers
     private int getUserOption(int optionMax) {
 
         int userOption;
@@ -675,37 +714,58 @@ public class UserInterface {
 
     private void checkoutScreen() {
 
-        if (!currentOrder.hasPizza()) {
+        if (!currentOrder.hasPizza() && (currentOrder.hasGarlicKnots() || currentOrder.hasDrink())) {
 
-            System.out.println("""
-                    ⚠️: No pizza in your order — You must add a Drink or Garlic knots
-                    """);
+            System.out.println("         --- CHECKOUT ---");
+
+            System.out.println(currentOrder.toString());
 
             System.out.print("Confirm order? (y/n): ");
-            String proceed = userInput.nextLine().trim();
-            if (!proceed.equalsIgnoreCase("y") && !proceed.equalsIgnoreCase("yes")) {
+            String confirm = userInput.nextLine().trim();
 
+            if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes")) {
+
+                receiptManager.saveReceipt(currentOrder);
+                System.out.println("\nOrder completed successfully!");
+            } else {
+
+                System.out.println("\nOrder cancelled.\n");
                 orderScreen();
             }
-
-
-        }
-
-        System.out.println("--- CHECKOUT ---");
-
-        System.out.println(currentOrder.toString());
-
-        System.out.print("Confirm order? (y/n): ");
-        String confirm = userInput.nextLine().trim();
-
-        if (confirm.equalsIgnoreCase("y") || confirm.equalsIgnoreCase("yes")) {
-
-            receiptManager.saveReceipt(currentOrder);
-            System.out.println("\nOrder completed successfully!");
         } else {
+            System.out.println("""
+                    ⚠️:Your order is empty — You must add a Drink or Garlic knots to proceed!
+                    """);
 
-            System.out.println("\nOrder cancelled.");
+            System.out.print("Returning to Order Screen");
+            getBufferingEffect();
+
+            //String proceed = userInput.nextLine().trim();
+
+                orderScreen();
         }
+    }
+
+    //a method to give my display the loading effect
+    public void getBufferingEffect(){
+
+        try {
+
+            for (int i = 0; i < 3; i++) {
+                Thread.sleep(500);
+                System.out.print(".");
+                Thread.sleep(500);
+                System.out.print(".");
+                Thread.sleep(500);
+                System.out.print(".");
+                Thread.sleep(500);
+                System.out.print("\b\b\b   \b\b\b");
+            }
+            System.out.println("...");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
     }
 
 }

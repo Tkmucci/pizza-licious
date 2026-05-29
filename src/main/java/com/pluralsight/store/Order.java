@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Order {
 
+    //declaring my variables
     private List<OrderItem> items;
     private String customerName;
     private LocalDateTime orderTime;
@@ -24,6 +25,7 @@ public class Order {
 //        this.customerName = "Guest";
 //    }
 
+    //my constant
     public Order(String customerName){
         this.items = new ArrayList<>();
         this.orderTime = LocalDateTime.now();
@@ -46,6 +48,7 @@ public class Order {
         this.items.add(item);
     }
 
+    //checking if a user orders the same pizza twice and increment it
     public void addPizza(Pizza pizza){
 
         // for premade pizzas, check if the same one already exists
@@ -55,6 +58,7 @@ public class Order {
 
                 if (existing.matchesPremade(pizza.getName(), pizza.getSize())) {
 
+                    System.out.println("You ordered this pizza before we went ahead and increased your order.");
                     existing.incrementCount();
                     return;
                 }
@@ -64,9 +68,10 @@ public class Order {
         items.add(pizza);
     }
 
+    //adding drink to the order
     public void addDrink(Drink drink){
 
-        //check if same size and flavor are already in the order
+        //check if same size and flavor are already in the order and increase the order
         for (OrderItem item : items) {
 
             if (item instanceof Drink existing) {
@@ -94,15 +99,16 @@ public class Order {
         }
     }
 
-    public int getGarlicKnotsCount() {
+//    public int getGarlicKnotsCount() {
+//
+//        if (garlicKnots == null) {
+//
+//            return 0;
+//        }
+//        return garlicKnots.getCount();
+//    }
 
-        if (garlicKnots == null) {
-
-            return 0;
-        }
-        return garlicKnots.getCount();
-    }
-
+    //checking if the order has pizza
     public boolean hasPizza() {
         for (OrderItem item : items) {
             if (item instanceof Pizza) {
@@ -112,6 +118,28 @@ public class Order {
         return false;
     }
 
+    //checking if the order has garlic knots
+    public boolean hasGarlicKnots() {
+        for (OrderItem item : items) {
+            if (item instanceof GarlicKnots) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //checking if the order has a Drink
+    public boolean hasDrink() {
+        for (OrderItem item : items) {
+            if (item instanceof Drink) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //calculating the order total
     public double getTotal(){
 
         double total = 0.0;
@@ -124,16 +152,18 @@ public class Order {
         return total;
     }
 
-    public boolean isEmpty() {
+//    public boolean isEmpty() {
+//
+//        return this.items.isEmpty();
+//    }
 
-        return this.items.isEmpty();
-    }
-
+    //incrementing item number
     public int getItemCount() {
 
         return this.items.size();
     }
 
+    //formatted receipt name
     public String getReceiptSaveName(){
 
         DateTimeFormatter receiptTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
@@ -141,6 +171,7 @@ public class Order {
         return orderTime.format(receiptTimeFormatter) + ".txt";
     }
 
+    //formatting the date and time of the order
     public String getFormattedOrderTime() {
 
         DateTimeFormatter orderTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
@@ -148,6 +179,7 @@ public class Order {
         return orderTime.format(orderTimeFormatter);
     }
 
+    //the layout that my receipt should have structured using a string builder
     @Override
     public String toString(){
 
